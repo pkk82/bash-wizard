@@ -8,7 +8,7 @@ alias gp='git pull'
 alias gf='git fetch'
 
 # gpo - git push origin
-alias gpo='git push origin \$(git rev-parse --abbrev-ref HEAD)'
+alias gpo='git push origin \$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
 # gppo - git pull && git push origin <branch>
 alias gppo='git pull && git push origin \$(git rev-parse --abbrev-ref HEAD)'
@@ -54,12 +54,12 @@ alias gl9='git log --oneline -n 9'
 
 # gcm - git checkout <main branch>
 function gcm() {
-  git checkout \$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+  git checkout \$(git remote show origin 2>/dev/null | sed -n '/HEAD branch/s/.*: //p')
 }
 
 # grom - git rebase origin/<main-branch>
 function grom() {
-  git rebase origin/\$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+  git rebase origin/\$(git remote show origin 2>/dev/null | sed -n '/HEAD branch/s/.*: //p')
 }
 
 EOL

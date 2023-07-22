@@ -55,6 +55,15 @@ alias gl9='git log --oneline -n 9'
 # grv - git remote -v
 alias grv='git remote -v'
 
+# gc - check if inside git repository, "1" inside, "0" outside
+function gc() {
+  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    echo "1"
+  else
+    echo "0"
+  fi
+}
+
 # gb - display current branch
 function gb() {
   git rev-parse --abbrev-ref HEAD
@@ -65,20 +74,22 @@ function gmb() {
   git remote show origin | sed -n '/HEAD branch/s/.*: //p'
 }
 
-function gmb_() {
-  git remote show origin 2>/dev/null | sed -n '/HEAD branch/s/.*: //p'
-}
-
 # gcm - git checkout <main branch>
 function gcm() {
-  mb=\$(gmb_)
-  git checkout "\$mb"
+  if [[ "\$(gc)" == "1" ]]; then
+    git checkout "\$(gmb)"
+  else
+    echo "Not inside a git repository."
+  fi
 }
 
 # grom - git rebase origin/<main-branch>
 function grom() {
-  mb=\$(gmb_)
-  git rebase "origin/\$mb"
+  if [[ "\$(gc)" == "1" ]]; then
+    git rebase "origin/\$(gmb)"
+  else
+    echo "Not inside a git repository."
+  fi
 }
 
 EOL

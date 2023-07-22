@@ -68,3 +68,5 @@ addFileLoadingByRcFiles "$confDir/bwrc"
 printInfo "bash-wizard is installed"
 printInfo "Type source 'source "$confDir/bwrc"' to load the commands in your current session"
 printInfo "Type 'bash-wizard' to see available commands"
+
+

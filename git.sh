@@ -107,7 +107,8 @@ function gbdm() {
 
     if [[ "\$b" != "\$mb" ]]; then
       echo "You are not on the main branch."
-      read -r -p "Do you want to continue? (y/n) " confirm
+      echo -n "Do you want to continue? (y/n): "
+      read -r confirm
     fi
 
     if [[ "\$confirm" =~ ^[Yy]\$ ]]; then

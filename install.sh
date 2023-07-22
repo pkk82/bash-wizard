@@ -1,6 +1,10 @@
-NC='\033[0m'
-GREEN='\033[0;32m'
-CYAN='\033[0;36m'
+function printInfo() {
+  printf "\e[1;36m%s\e[0m\n" "$1"
+}
+
+function printUpdateInfo() {
+  printf "\e[1;32m%s\e[0m\n" "$1"
+}
 
 function configDir() {
   echo "$HOME/.bash-wizard"
@@ -35,9 +39,9 @@ function addFileLoadingByRcFile() {
   rcFileExists=$(verifyFile "$rcFile")
   if [[ "$rcFileExists" == "1" ]]; then
     if grep -q "$loadedFile" "$rcFile"; then
-      echo -e "${GREEN}$rcFile loads $loadedFile${NC}"
+      printInfo "$rcFile loads $loadedFile"
     else
-      echo -e "${CYAN}modifying $rcFile to load $loadedFile${NC}"
+      printUpdateInfo "modifying $rcFile to $loadedFile"
       echo "[[ -s \"$loadedFile\" ]] && . \"$loadedFile\"" >>"$rcFile"
     fi
   fi

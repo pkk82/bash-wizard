@@ -16,6 +16,9 @@ alias gppo='git pull && git push origin \$(git rev-parse --abbrev-ref HEAD)'
 # gcb - git checkout -b <branch>
 alias gcb='git checkout -b'
 
+# gc - git checkout <branch>
+alias gcb='git checkout'
+
 # gb - git branch
 alias gb='git branch'
 

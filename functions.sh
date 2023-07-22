@@ -10,8 +10,7 @@ function bash-wizard() {
     fileName=\$(basename "\$f")
     [[ "\$fileName" != "bwrc" ]] || continue
     [[ "\$fileName" != "functions" ]] || continue
-    withoutDash="\${fileName//-/ }"
-    echo "\${withoutDash^^}"
+    echo "\${fileName}" | tr '[:lower:]' '[:upper:]'
     grep "#" < "\$f"
     echo ""
   done

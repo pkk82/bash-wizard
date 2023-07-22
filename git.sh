@@ -13,11 +13,11 @@ alias gpo='git push origin \$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 # gppo - git pull && git push origin <branch>
 alias gppo='git pull && git push origin \$(git rev-parse --abbrev-ref HEAD)'
 
+# gc - git checkout <branch>
+alias gc='git checkout'
+
 # gcb - git checkout -b <branch>
 alias gcb='git checkout -b'
-
-# gc - git checkout <branch>
-alias gcb='git checkout'
 
 # gb - git branch
 alias gb='git branch'
@@ -62,7 +62,7 @@ alias gl9='git log --oneline -n 9'
 alias grv='git remote -v'
 
 # g-c - check if inside git repository, "1" inside, "0" outside
-function gc() {
+function g-c() {
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     echo "1"
   else
@@ -71,19 +71,19 @@ function gc() {
 }
 
 # g-cb - display current branch
-function gcb() {
+function g-cb() {
   git rev-parse --abbrev-ref HEAD
 }
 
 # g-mb - display main branch
-function gmb() {
+function g-mb() {
   git remote show origin | sed -n '/HEAD branch/s/.*: //p'
 }
 
 # gcm - git checkout <main branch>
 function gcm() {
   if [[ "\$(g-c)" == "1" ]]; then
-    git checkout "\$(gmb)"
+    git checkout "\$(g-mb)"
   else
     echo "Not inside a git repository."
   fi
@@ -92,7 +92,7 @@ function gcm() {
 # grom - git rebase origin/<main-branch>
 function grom() {
   if [[ "\$(g-c)" == "1" ]]; then
-    git rebase "origin/\$(gmb)"
+    git rebase "origin/\$(g-mb)"
   else
     echo "Not inside a git repository."
   fi

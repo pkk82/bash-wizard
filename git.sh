@@ -58,7 +58,7 @@ alias gl9='git log --oneline -n 9'
 # grv - git remote -v
 alias grv='git remote -v'
 
-# gc - check if inside git repository, "1" inside, "0" outside
+# g-c - check if inside git repository, "1" inside, "0" outside
 function gc() {
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     echo "1"
@@ -67,19 +67,19 @@ function gc() {
   fi
 }
 
-# gcb - display current branch
+# g-cb - display current branch
 function gcb() {
   git rev-parse --abbrev-ref HEAD
 }
 
-# gmb - display main branch
+# g-mb - display main branch
 function gmb() {
   git remote show origin | sed -n '/HEAD branch/s/.*: //p'
 }
 
 # gcm - git checkout <main branch>
 function gcm() {
-  if [[ "\$(gc)" == "1" ]]; then
+  if [[ "\$(g-c)" == "1" ]]; then
     git checkout "\$(gmb)"
   else
     echo "Not inside a git repository."
@@ -88,7 +88,7 @@ function gcm() {
 
 # grom - git rebase origin/<main-branch>
 function grom() {
-  if [[ "\$(gc)" == "1" ]]; then
+  if [[ "\$(g-c)" == "1" ]]; then
     git rebase "origin/\$(gmb)"
   else
     echo "Not inside a git repository."
@@ -97,9 +97,9 @@ function grom() {
 
 # gbdm - remove merged branches
 function gbdm() {
-  if [[ "\$(gc)" == "1" ]]; then
-    b=\$(gcb)
-    mb=\$(gmb)
+  if [[ "\$(g-c)" == "1" ]]; then
+    b=\$(g-cb)
+    mb=\$(g-mb)
     confirm="y"
 
     if [[ "\$b" != "\$mb" ]]; then

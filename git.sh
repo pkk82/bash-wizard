@@ -16,6 +16,9 @@ alias gppo='git pull && git push origin \$(git rev-parse --abbrev-ref HEAD)'
 # gcb - git checkout -b <branch>
 alias gcb='git checkout -b'
 
+# gb - git branch
+alias gb='git branch'
+
 # gbv - git branch -v
 alias gbv='git branch -v'
 
@@ -64,8 +67,8 @@ function gc() {
   fi
 }
 
-# gb - display current branch
-function gb() {
+# gcb - display current branch
+function gcb() {
   git rev-parse --abbrev-ref HEAD
 }
 
@@ -95,7 +98,7 @@ function grom() {
 # gbdm - remove merged branches
 function gbdm() {
   if [[ "\$(gc)" == "1" ]]; then
-    b=\$(gb)
+    b=\$(gcb)
     mb=\$(gmb)
     confirm="y"
 

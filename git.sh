@@ -52,14 +52,33 @@ alias gl8='git log --oneline -n 8'
 # gl9 - git log --oneline -n 9
 alias gl9='git log --oneline -n 9'
 
+# grv - git remote -v
+alias grv='git remote -v'
+
+# gb - display current branch
+function gb() {
+  git rev-parse --abbrev-ref HEAD
+}
+
+# gmb - display main branch
+function gmb() {
+  git remote show origin | sed -n '/HEAD branch/s/.*: //p'
+}
+
+function gmb_() {
+  git remote show origin 2>/dev/null | sed -n '/HEAD branch/s/.*: //p'
+}
+
 # gcm - git checkout <main branch>
 function gcm() {
-  git checkout \$(git remote show origin 2>/dev/null | sed -n '/HEAD branch/s/.*: //p')
+  mb=\$(gmb_)
+  git checkout "\$mb"
 }
 
 # grom - git rebase origin/<main-branch>
 function grom() {
-  git rebase origin/\$(git remote show origin 2>/dev/null | sed -n '/HEAD branch/s/.*: //p')
+  mb=\$(gmb_)
+  git rebase "origin/\$mb"
 }
 
 EOL

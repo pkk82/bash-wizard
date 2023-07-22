@@ -92,5 +92,30 @@ function grom() {
   fi
 }
 
+# gbdm - remove merged branches
+function gbdm() {
+  if [[ "\$(gc)" == "1" ]]; then
+    b=\$(gb_)
+    mb=\$(gmb_)
+    confirm="y"
+
+    if [[ "\$b" != "\$mb" ]]; then
+      echo "You are not on the main branch."
+      read -r -p "Do you want to continue? (y/n) " confirm
+    fi
+
+    if [[ "\$confirm" =~ ^[Yy]\$ ]]; then
+      mergedBranches=\$(git branch --merged | grep -vE "(\*|\$mb)")
+      if [[ "\$mergedBranches" == "" ]]; then
+        echo "No branches to remove."
+      else
+        echo "\$mergedBranches" | xargs git branch -d
+      fi
+    fi
+  else
+    echo "Not inside a git repository."
+  fi
+}
+
 EOL
 

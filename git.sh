@@ -95,8 +95,8 @@ function grom() {
 # gbdm - remove merged branches
 function gbdm() {
   if [[ "\$(gc)" == "1" ]]; then
-    b=\$(gb_)
-    mb=\$(gmb_)
+    b=\$(gb)
+    mb=\$(gmb)
     confirm="y"
 
     if [[ "\$b" != "\$mb" ]]; then

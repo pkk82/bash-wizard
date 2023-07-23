@@ -53,17 +53,17 @@ rm -rf "$confDir"
 mkdir -p "$confDir"
 
 # create main rc file
-cat >"$confDir/bwrc" <<EOL
-. "$confDir/git"
-. "$confDir/functions"
+cat >"$confDir/.bwrc" <<EOL
+. "$confDir/.gitrc"
+. "$confDir/.functionsrc"
 EOL
 
 # create
-. git.sh
+. ./git.sh
 . ./functions.sh
 
 # modify rc files to include bwrc
-addFileLoadingByRcFiles "$confDir/bwrc"
+addFileLoadingByRcFiles "$confDir/.bwrc"
 
 printInfo "bash-wizard is installed"
 printInfo "Type source 'source "$confDir/bwrc"' to load the commands in your current session"

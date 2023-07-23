@@ -1,5 +1,5 @@
 confDir=$(configDir)
-file="$confDir/git"
+file="$confDir/.gitrc"
 cat >"$file" <<EOL
 # gp - git pull
 alias gp='git pull'

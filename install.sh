@@ -6,6 +6,10 @@ function printUpdateInfo() {
   printf "\e[1;32m%s\e[0m\n" "$1"
 }
 
+function printCommand() {
+  printf "  %s\n" "$1"
+}
+
 function configDir() {
   echo "$HOME/.bash-wizard"
 }
@@ -51,9 +55,10 @@ function addFileLoadingByRcFile() {
 confDir=$(configDir)
 rm -rf "$confDir"
 mkdir -p "$confDir"
+mainRcFile="$confDir/.bwrc"
 
 # create main rc file
-cat >"$confDir/.bwrc" <<EOL
+cat >"$mainRcFile" <<EOL
 . "$confDir/.gitrc"
 . "$confDir/.functionsrc"
 EOL
@@ -66,7 +71,9 @@ EOL
 addFileLoadingByRcFiles "$confDir/.bwrc"
 
 printInfo "bash-wizard is installed"
-printInfo "Type source 'source "$confDir/bwrc"' to load the commands in your current session"
-printInfo "Type 'bash-wizard' to see available commands"
+printInfo "To load the commands in your current session type:"
+printCommand "source $mainRcFile"
+printInfo "To see available commands:"
+printCommand "bash-wizard"
 
 

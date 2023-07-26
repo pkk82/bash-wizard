@@ -16,6 +16,18 @@ function bash-wizard() {
   done
 }
 
+function bash-wizard-md() {
+  for f in "$confDir"/.*rc; do
+    [[ -e "\$f" ]] || break
+    fileName=\$(basename "\$f")
+    [[ "\$fileName" != ".bwrc" ]] || continue
+    [[ "\$fileName" != ".functionsrc" ]] || continue
+    echo "### \${fileName}" | sed 's/\.//g' | sed 's/rc//g' | tr '[:lower:]' '[:upper:]'
+    grep "#" < "\$f" | sed 's/#//g' | sed 's/\(.*\) - \(.*\)/    # \2\n   \1\n/g'
+    echo ""
+  done
+}
+
 EOL
 
 

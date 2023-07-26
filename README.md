@@ -115,3 +115,29 @@ Follow the steps below to set up AliasGenius in your shell environment:
 
     # remove merged branches
     gbdm
+
+
+### MAVEN
+    # mvn clean install
+    mci
+
+    # mvn clean verify
+    mcv
+
+    # mvn clean package
+    mcp
+
+    # mvn clean test-compile
+    mctc
+
+    # mvn clean test
+    mct
+
+    # mvn clean install -DskipTests
+    mcist
+
+    # mvn clean package -DskipTests
+    mcpst
+
+    # mvn wrapper:wrapper
+    mw

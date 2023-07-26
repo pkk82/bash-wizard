@@ -60,11 +60,13 @@ mainRcFile="$confDir/.bwrc"
 # create main rc file
 cat >"$mainRcFile" <<EOL
 . "$confDir/.gitrc"
+. "$confDir/.mavenrc"
 . "$confDir/.functionsrc"
 EOL
 
 # create
 . ./git.sh
+. ./maven.sh
 . ./functions.sh
 
 # modify rc files to include bwrc

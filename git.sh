@@ -4,25 +4,25 @@ cat >"$file" <<EOL
 # gp - git pull
 alias gp='git pull'
 
-# gt - git tag <tag>
+# gt <tag> - git tag <tag>
 alias gt='git tag'
 
 # gf - git fetch
 alias gf='git fetch'
 
-# gpo - git push origin <branch>
+# gpo - git push origin <current branch>
 alias gpo='git push origin \$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
 # gpot - git push origin --tags
 alias gpo='git push origin --tags'
 
-# gppo - git pull && git push origin <branch>
+# gppo - git pull && git push origin <current branch>
 alias gppo='git pull && git push origin \$(git rev-parse --abbrev-ref HEAD)'
 
-# gc - git checkout <branch>
+# gc <branch> - git checkout <branch>
 alias gc='git checkout'
 
-# gcb - git checkout -b <branch>
+# gcb <branch> - git checkout -b <branch>
 alias gcb='git checkout -b'
 
 # gb - git branch
@@ -31,7 +31,7 @@ alias gb='git branch'
 # gbv - git branch -v
 alias gbv='git branch -v'
 
-# gbd - git branch -D <branch>
+# gbd <branch> - git branch -D <branch>
 alias gbd='git branch -D'
 
 # gbm - git branch --merged

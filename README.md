@@ -28,30 +28,30 @@ Follow the steps below to set up AliasGenius in your shell environment:
 
 ## Aliases & Functions
 
-### GIT 
+### GIT
     # git pull
     gp
 
     # git tag <tag>
-    gt
+    gt <tag>
 
     # git fetch
     gf
 
-    # git push origin <branch>
+    # git push origin <current branch>
     gpo
 
     # git push origin --tags
     gpot
 
-    # git pull && git push origin <branch>
+    # git pull && git push origin <current branch>
     gppo
 
     # git checkout <branch>
-    gc
+    gc <branch>
 
     # git checkout -b <branch>
-    gcb
+    gcb <branch>
 
     # git branch
     gb
@@ -60,7 +60,7 @@ Follow the steps below to set up AliasGenius in your shell environment:
     gbv
 
     # git branch -D <branch>
-    gbd
+    gbd <branch>
 
     # git branch --merged
     gbm

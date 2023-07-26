@@ -89,6 +89,16 @@ function gcm() {
   fi
 }
 
+# gcmp - git checkout <main branch> && git pull
+function gcmp() {
+  if [[ "\$(g-c)" == "1" ]]; then
+      git checkout "\$(g-mb)"
+      git pull
+    else
+      echo "Not inside a git repository."
+    fi
+}
+
 # grom - git rebase origin/<main-branch>
 function grom() {
   if [[ "\$(g-c)" == "1" ]]; then

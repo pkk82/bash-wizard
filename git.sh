@@ -4,6 +4,9 @@ cat >"$file" <<EOL
 # gp - git pull
 alias gp='git pull'
 
+# gt - git tag <tag>
+alias gt='git tag'
+
 # gf - git fetch
 alias gf='git fetch'
 

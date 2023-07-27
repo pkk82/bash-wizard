@@ -14,7 +14,7 @@ alias gf='git fetch'
 alias gpo='git push origin \$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
 # gpot - git push origin --tags
-alias gpo='git push origin --tags'
+alias gpot='git push origin --tags'
 
 # gppo - git pull && git push origin <current branch>
 alias gppo='git pull && git push origin \$(git rev-parse --abbrev-ref HEAD)'

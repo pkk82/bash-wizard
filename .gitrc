@@ -1,6 +1,9 @@
 # gp - git pull
 alias gp='git pull'
 
+# gs - git status
+alias gs='git status'
+
 # gt <tag> - git tag <tag>
 alias gt='git tag'
 

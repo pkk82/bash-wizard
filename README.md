@@ -40,6 +40,9 @@ To automatically update the README.md file with the latest aliases and functions
     # git pull
     gp
 
+    # git status
+    gs
+
     # git tag <tag>
     gt <tag>
 

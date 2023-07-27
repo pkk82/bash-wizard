@@ -26,6 +26,14 @@ Follow the steps below to set up AliasGenius in your shell environment:
     ```
 5. Congratulations! You are now an BashWizard user. Explore the provided aliases and functions by typing `bash-wizard` in your terminal.
 
+## Update README.md
+
+To automatically update the README.md file with the latest aliases and functions, run the following script:
+
+```bash
+./updateREADME.md.sh
+```
+
 ## Aliases & Functions
 
 ### GIT
@@ -119,7 +127,6 @@ Follow the steps below to set up AliasGenius in your shell environment:
     # remove merged branches
     gbdm
 
-
 ### MAVEN
     # mvn clean install
     mci
@@ -144,3 +151,4 @@ Follow the steps below to set up AliasGenius in your shell environment:
 
     # mvn wrapper:wrapper
     mw
+

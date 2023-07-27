@@ -35,6 +35,9 @@ Follow the steps below to set up AliasGenius in your shell environment:
     # git tag <tag>
     gt <tag>
 
+    # git tag --delete <tag>
+    gtd <tag>
+
     # git fetch
     gf
 

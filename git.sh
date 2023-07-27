@@ -7,6 +7,9 @@ alias gp='git pull'
 # gt <tag> - git tag <tag>
 alias gt='git tag'
 
+# gtd <tag> - git tag --delete <tag>
+alias gtd='git tag --delete'
+
 # gf - git fetch
 alias gf='git fetch'
 

@@ -140,6 +140,9 @@ To automatically update the README.md file with the latest aliases and functions
     # mvn clean package
     mcp
 
+    # mvn clean compile
+    mcc
+
     # mvn clean test-compile
     mctc
 

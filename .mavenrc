@@ -7,6 +7,9 @@ alias mcv='mvn clean verify'
 # mcp - mvn clean package
 alias mcp='mvn clean package'
 
+# mcc - mvn clean compile
+alias mcc='mvn clean compile'
+
 # mctc - mvn clean test-compile
 alias mctc='mvn clean test-compile'
 

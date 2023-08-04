@@ -5,11 +5,13 @@ functionsFile="$confDir/.functionsrc"
 cat >"$functionsFile" <<EOL
 
 function bash-wizard() {
+  search=\$(echo "\$1" | tr '[:upper:]' '[:lower:]')
   for f in "$confDir"/.*rc; do
     [[ -e "\$f" ]] || break
     fileName=\$(basename "\$f")
     [[ "\$fileName" != ".bwrc" ]] || continue
     [[ "\$fileName" != ".functionsrc" ]] || continue
+    [[ "\$search" == "" ]] || [[ \$fileName =~ ^\..*\$search.*rc$ ]] || continue
     echo "\${fileName}" | sed 's/\.//g' | sed 's/rc//g' | tr '[:lower:]' '[:upper:]'
     grep "#" < "\$f"
     echo ""

@@ -14,10 +14,10 @@ alias mctc='mvn clean test-compile'
 alias mct='mvn clean test'
 
 # mcist - mvn clean install -DskipTests
-alias mcist='mvn clean install -DskipTests'
+alias mcist='mvn clean install -DskipTests -DskipUnitTests -DskipIntegrationTests'
 
 # mcpst - mvn clean package -DskipTests
-alias mcpst='mvn clean package -DskipTests'
+alias mcpst='mvn clean package -DskipTests -DskipUnitTests -DskipIntegrationTests'
 
 # mw - mvn wrapper:wrapper
 alias mw='mvn wrapper:wrapper'

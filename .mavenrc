@@ -22,5 +22,29 @@ alias mcist='mvn clean install -DskipTests -DskipUnitTests -DskipIntegrationTest
 # mcpst - mvn clean package -DskipTests
 alias mcpst='mvn clean package -DskipTests -DskipUnitTests -DskipIntegrationTests'
 
+# mi - mvn install
+alias mi='mvn install'
+
+# mve - mvn verify
+alias mve='mvn verify'
+
+# mp - mvn package
+alias mp='mvn package'
+
+# mc - mvn compile
+alias mc='mvn compile'
+
+# mtc - mvn test-compile
+alias mtc='mvn test-compile'
+
+# mt - mvn test
+alias mt='mvn test'
+
+# mist - mvn install -DskipTests
+alias mist='mvn install -DskipTests -DskipUnitTests -DskipIntegrationTests'
+
+# mpst - mvn package -DskipTests
+alias mpst='mvn package -DskipTests -DskipUnitTests -DskipIntegrationTests'
+
 # mw - mvn wrapper:wrapper
 alias mw='mvn wrapper:wrapper'

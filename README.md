@@ -155,6 +155,30 @@ To automatically update the README.md file with the latest aliases and functions
     # mvn clean package -DskipTests
     mcpst
 
+    # mvn install
+    mi
+
+    # mvn verify
+    mve
+
+    # mvn package
+    mp
+
+    # mvn compile
+    mc
+
+    # mvn test-compile
+    mtc
+
+    # mvn test
+    mt
+
+    # mvn install -DskipTests
+    mist
+
+    # mvn package -DskipTests
+    mpst
+
     # mvn wrapper:wrapper
     mw
 

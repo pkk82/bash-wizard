@@ -55,6 +55,21 @@ To automatically update the README.md file with the latest aliases and functions
     # git push origin <current branch>
     gpo
 
+    # git push origin HEAD~1:<current branch>
+    gpo1
+
+    # git push origin HEAD~2:<current branch>
+    gpo2
+
+    # git push origin HEAD~3:<current branch>
+    gpo3
+
+    # git push origin HEAD~4:<current branch>
+    gpo4
+
+    # git push origin HEAD~5:<current branch>
+    gpo5
+
     # git push origin --tags
     gpot
 

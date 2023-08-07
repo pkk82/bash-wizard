@@ -121,6 +121,33 @@ To automatically update the README.md file with the latest aliases and functions
     # git log --oneline -n 9
     gl9
 
+    # git rebase -i HEAD~1
+    gri1
+
+    # git rebase -i HEAD~2
+    gri2
+
+    # git rebase -i HEAD~3
+    gri3
+
+    # git rebase -i HEAD~4
+    gri4
+
+    # git rebase -i HEAD~5
+    gri5
+
+    # git rebase -i HEAD~6
+    gri6
+
+    # git rebase -i HEAD~7
+    gri7
+
+    # git rebase -i HEAD~8
+    gri8
+
+    # git rebase -i HEAD~9
+    gri9
+
     # git remote -v
     grv
 

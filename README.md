@@ -172,6 +172,33 @@ To automatically update the README.md file with the latest aliases and functions
     # remove merged branches
     gbdm
 
+    # git remove --soft HEAD~1
+    gsr1
+
+    # git remove --soft HEAD~2
+    gsr2
+
+    # git remove --soft HEAD~3
+    gsr3
+
+    # git remove --soft HEAD~4
+    gsr4
+
+    # git remove --soft HEAD~5
+    gsr5
+
+    # git remove --soft HEAD~6
+    gsr6
+
+    # git remove --soft HEAD~7
+    gsr7
+
+    # git remove --soft HEAD~8
+    gsr8
+
+    # git remove --soft HEAD~9
+    gsr9
+
 ### MAVEN
     # mvn clean install
     mci

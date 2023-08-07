@@ -185,3 +185,30 @@ function gbdm() {
   fi
 }
 
+# gsr1 - git remove --soft HEAD~1
+alias gsr1='git remove --soft HEAD~1'
+
+# gsr2 - git remove --soft HEAD~2
+alias gsr2='git remove --soft HEAD~2'
+
+# gsr3 - git remove --soft HEAD~3
+alias gsr3='git remove --soft HEAD~3'
+
+# gsr4 - git remove --soft HEAD~4
+alias gsr4='git remove --soft HEAD~4'
+
+# gsr5 - git remove --soft HEAD~5
+alias gsr5='git remove --soft HEAD~5'
+
+# gsr6 - git remove --soft HEAD~6
+alias gsr6='git remove --soft HEAD~6'
+
+# gsr7 - git remove --soft HEAD~7
+alias gsr7='git remove --soft HEAD~7'
+
+# gsr8 - git remove --soft HEAD~8
+alias gsr8='git remove --soft HEAD~8'
+
+# gsr9 - git remove --soft HEAD~9
+alias gsr9='git remove --soft HEAD~9'
+

@@ -212,3 +212,30 @@ alias gsr8='git remove --soft HEAD~8'
 # gsr9 - git remove --soft HEAD~9
 alias gsr9='git remove --soft HEAD~9'
 
+# ghr1 - git remove --hard HEAD~1
+alias ghr1='git remove --hard HEAD~1'
+
+# ghr2 - git remove --hard HEAD~2
+alias ghr2='git remove --hard HEAD~2'
+
+# ghr3 - git remove --hard HEAD~3
+alias ghr3='git remove --hard HEAD~3'
+
+# ghr4 - git remove --hard HEAD~4
+alias ghr4='git remove --hard HEAD~4'
+
+# ghr5 - git remove --hard HEAD~5
+alias ghr5='git remove --hard HEAD~5'
+
+# ghr6 - git remove --hard HEAD~6
+alias ghr6='git remove --hard HEAD~6'
+
+# ghr7 - git remove --hard HEAD~7
+alias ghr7='git remove --hard HEAD~7'
+
+# ghr8 - git remove --hard HEAD~8
+alias ghr8='git remove --hard HEAD~8'
+
+# ghr9 - git remove --hard HEAD~9
+alias ghr9='git remove --hard HEAD~9'
+

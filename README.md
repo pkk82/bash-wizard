@@ -199,6 +199,33 @@ To automatically update the README.md file with the latest aliases and functions
     # git remove --soft HEAD~9
     gsr9
 
+    # git remove --hard HEAD~1
+    ghr1
+
+    # git remove --hard HEAD~2
+    ghr2
+
+    # git remove --hard HEAD~3
+    ghr3
+
+    # git remove --hard HEAD~4
+    ghr4
+
+    # git remove --hard HEAD~5
+    ghr5
+
+    # git remove --hard HEAD~6
+    ghr6
+
+    # git remove --hard HEAD~7
+    ghr7
+
+    # git remove --hard HEAD~8
+    ghr8
+
+    # git remove --hard HEAD~9
+    ghr9
+
 ### MAVEN
     # mvn clean install
     mci

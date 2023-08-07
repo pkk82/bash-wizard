@@ -36,6 +36,37 @@ To automatically update the README.md file with the latest aliases and functions
 
 ## Aliases & Functions
 
+### DOCKER
+    # docker-compose
+    dc
+
+    # docker-compose up
+    dcu
+
+    # docker-compose up -d
+    dcud
+
+    # docker-compose up -d --build
+    dcudb
+
+    # docker-compose logs
+    dcl
+
+    # docker-compose logs -f
+    dclf
+
+    # docker-compose down
+    dcd
+
+    # docker-compose restart
+    dcr
+
+    # docker-compose down && docker-compose up -d
+    dcdud
+
+    # docker-compose down && docker-compose up -d --build
+    dcdudb
+
 ### GIT
     # git pull
     gp

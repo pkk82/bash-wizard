@@ -46,8 +46,14 @@ alias mist='mvn install -DskipTests -DskipUnitTests -DskipIntegrationTests'
 # mpst - mvn package -DskipTests
 alias mpst='mvn package -DskipTests -DskipUnitTests -DskipIntegrationTests'
 
-# mw - mvn wrapper:wrapper
-alias mw='mvn wrapper:wrapper'
+# mw <version> - mvn wrapper:wrapper -Dmaven=<version>
+function mw() {
+  if [[ "$1" == "" ]]; then
+    mvn wrapper:wrapper
+  else
+    mvn wrapper:wrapper -Dmaven="$1"
+  fi
+}
 
 # mej - launch compiled class using maven exec plugin, pass term matching main class as first argument and arguments to main class as subsequent ones
 function mej() {

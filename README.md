@@ -306,8 +306,8 @@ To automatically update the README.md file with the latest aliases and functions
     # mvn package -DskipTests
     mpst
 
-    # mvn wrapper:wrapper
-    mw
+    # mvn wrapper:wrapper -Dmaven=<version>
+    mw <version>
 
     # launch compiled class using maven exec plugin, pass term matching main class as first argument and arguments to main class as subsequent ones
     mej

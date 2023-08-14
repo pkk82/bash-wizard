@@ -16,20 +16,20 @@ alias gf='git fetch'
 # gpo - git push origin <current branch>
 alias gpo='git push origin $(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
-# gpo1 - git push origin HEAD~1:<current branch>
-alias gpo1='git push origin HEAD~1:$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'\
+# gpo1 - git push origin HEAD~1:refs/heads/<current branch>
+alias gpo1='git push origin HEAD~1:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'\
 
-# gpo2 - git push origin HEAD~2:<current branch>
-alias gpo2='git push origin HEAD~2:$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+# gpo2 - git push origin HEAD~2:refs/heads/<current branch>
+alias gpo2='git push origin HEAD~2:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
-# gpo3 - git push origin HEAD~3:<current branch>
-alias gpo3='git push origin HEAD~3:$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+# gpo3 - git push origin HEAD~3:refs/heads/<current branch>
+alias gpo3='git push origin HEAD~3:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
-# gpo4 - git push origin HEAD~4:<current branch>
-alias gpo4='git push origin HEAD~4:$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+# gpo4 - git push origin HEAD~4:refs/heads/<current branch>
+alias gpo4='git push origin HEAD~4:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
-# gpo5 - git push origin HEAD~5:<current branch>
-alias gpo5='git push origin HEAD~5:$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+# gpo5 - git push origin HEAD~5:refs/heads/<current branch>
+alias gpo5='git push origin HEAD~5:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
 # gpot - git push origin --tags
 alias gpot='git push origin --tags'

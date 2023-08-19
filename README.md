@@ -312,3 +312,6 @@ To automatically update the README.md file with the latest aliases and functions
     # launch compiled class using maven exec plugin, pass term matching main class as first argument and arguments to main class as subsequent ones
     mej
 
+    # launch all compiled class using maven exec plugin, pass term matching main class as first argument and arguments to main class as subsequent ones
+    meja
+

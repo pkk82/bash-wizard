@@ -74,3 +74,27 @@ function mej() {
   fi
   mvn exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}"
 }
+
+# meja - launch all compiled class using maven exec plugin, pass term matching main class as first argument and arguments to main class as subsequent ones
+function meja() {
+  local term
+
+  if [[ "$1" == "" ]]; then
+    echo "Use: mej <main class term> <arguments>"
+    return 1
+  fi
+
+  term="${1//./_}"
+  classFiles=$(find ./target -type f -name "*$term*.class")
+  if [[ "$classFiles" == "" ]]; then
+    echo "Classes not found"
+    return 1
+  fi
+  for classFile in $classFiles; do
+      className=$(echo "$classFile" | sed 's/\.\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
+      echo ""
+      echo "Launching $className"
+      echo ""
+      mvn exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}"
+  done
+}

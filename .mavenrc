@@ -65,7 +65,13 @@ function mej() {
   fi
 
   term="${1//./_}"
-  classFiles=$(find . -type f -name "*$term*.class")
+  classFiles=$(find . -type f -name "$term*.class")
+  if [[ "$classFiles" == "" ]]; then
+    classFiles=$(find . -type f -name "_$term*.class")
+  fi
+  if [[ "$classFiles" == "" ]]; then
+    classFiles=$(find . -type f -name "*$term*.class")
+  fi
   if [[ "$classFiles" == "" ]]; then
     echo "Classes not found - did you compile your project?"
     return 1

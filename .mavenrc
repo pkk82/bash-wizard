@@ -79,7 +79,7 @@ function mej() {
       echo ""
       echo "Launching $className"
       echo ""
-      mvn exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
+      mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
       break
   done
 }
@@ -108,7 +108,7 @@ function meja() {
       echo ""
       echo "Launching $className"
       echo ""
-      mvn exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
+      mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
   done
 }
 

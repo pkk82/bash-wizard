@@ -65,20 +65,21 @@ function mej() {
   fi
 
   term="${1//./_}"
-  classFiles=$(find ./target -type f -name "*$term*.class")
+  classFiles=$(find . -type f -name "*$term*.class")
   if [[ "$classFiles" == "" ]]; then
     echo "Classes not found"
     return 1
   fi
   for classFile in $classFiles; do
-      className=$(echo "$classFile" | sed 's/\.\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
+      className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
+      path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
       if [[ "$className" == *'$'* ]]; then
         continue
       fi
       echo ""
       echo "Launching $className"
       echo ""
-      mvn exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}"
+      mvn exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
       break
   done
 }
@@ -93,19 +94,20 @@ function meja() {
   fi
 
   term="${1//./_}"
-  classFiles=$(find ./target -type f -name "*$term*.class")
+  classFiles=$(find . -type f -name "*$term*.class")
   if [[ "$classFiles" == "" ]]; then
     echo "Classes not found"
     return 1
   fi
   for classFile in $classFiles; do
-      className=$(echo "$classFile" | sed 's/\.\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
+      className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
+      path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
       if [[ "$className" == *'$'* ]]; then
         continue
       fi
       echo ""
       echo "Launching $className"
       echo ""
-      mvn exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}"
+      mvn exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
   done
 }

@@ -67,7 +67,7 @@ function mej() {
   term="${1//./_}"
   classFiles=$(find . -type f -name "*$term*.class")
   if [[ "$classFiles" == "" ]]; then
-    echo "Classes not found"
+    echo "Classes not found - did you compile your project?"
     return 1
   fi
   for classFile in $classFiles; do
@@ -96,7 +96,7 @@ function meja() {
   term="${1//./_}"
   classFiles=$(find . -type f -name "*$term*.class")
   if [[ "$classFiles" == "" ]]; then
-    echo "Classes not found"
+    echo "Classes not found - did you compile your project?"
     return 1
   fi
   for classFile in $classFiles; do

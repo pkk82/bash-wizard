@@ -88,7 +88,7 @@ function meja() {
   local term
 
   if [[ "$1" == "" ]]; then
-    echo "Use: mej <main class term> <arguments>"
+    echo "Use: meja <main class term> <arguments>"
     return 1
   fi
 

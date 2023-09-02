@@ -111,3 +111,25 @@ function meja() {
       mvn exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
   done
 }
+
+# mejaa - launch all compiled class using maven exec plugin, pass arguments to main classes as subsequent ones
+function mejaa() {
+  classFiles=$(find . -type f -name "*$term*.class")
+  if [[ "$classFiles" == "" ]]; then
+    echo "Classes not found - did you compile your project?"
+    return 1
+  fi
+  for classFile in $classFiles; do
+      main1=$(javap "$classFile" | grep "public static void main(java.lang.String\[\])" 2>&1)
+      main2=$(javap "$classFile" | grep "public static final void main(java.lang.String\[\])" 2>&1)
+      className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
+      path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
+      if [[ "$main1" == "" ]] && [[ "$main2" == "" ]]; then
+        continue
+      fi
+      echo ""
+      echo "Launching $className"
+      echo ""
+      mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
+  done
+}

@@ -60,6 +60,7 @@ mainRcFile="$confDir/.bwrc"
 # create main rc file
 cat >"$mainRcFile" <<EOL
 . "$confDir/.gitrc"
+. "$confDir/.javarc"
 . "$confDir/.mavenrc"
 . "$confDir/.dockerrc"
 . "$confDir/.functionsrc"
@@ -67,6 +68,7 @@ EOL
 
 # create
 . ./git.sh
+. ./java.sh
 . ./maven.sh
 . ./docker.sh
 . ./functions.sh

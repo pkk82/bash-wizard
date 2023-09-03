@@ -1,0 +1,20 @@
+# jim <class file path> - check if java class is main class
+function jim() {
+  if [[ -z "$JAVA_HOME" ]]; then
+    echo "The variable JAVA_HOME is defined and not empty."
+    return 3
+  fi
+  if ! [[ -f "$1" ]]; then
+    echo "The file $1 does not exist."
+    return 2
+  fi
+  local classFile
+  classFile="$1"
+  main1=$("$JAVA_HOME/bin/javap" "$classFile" | grep "public static void main(java.lang.String\[\])" 2>&1)
+  main2=$("$JAVA_HOME/bin/javap" "$classFile" | grep "public static final void main(java.lang.String\[\])" 2>&1)
+  if [[ "$main1" == "" ]] && [[ "$main2" == "" ]]; then
+    echo "There is no main method in $classFile."
+  else
+    echo "There is a main method in $classFile."
+  fi
+}

@@ -77,16 +77,20 @@ function mej() {
     return 1
   fi
   for classFile in $classFiles; do
-      className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
-      path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
-      if [[ "$className" == *'$'* ]]; then
-        continue
-      fi
-      echo ""
-      echo "Launching $className"
-      echo ""
-      mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
+    className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
+    path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
+    if ! result=$(jim "$classFile"); then
+      echo "$result"
       break
+    fi
+    if [[ "$result" == "There is no main method in"* ]]; then
+      continue
+    fi
+    echo ""
+    echo "Launching $className"
+    echo ""
+    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
+    break
   done
 }
 
@@ -106,15 +110,19 @@ function meja() {
     return 1
   fi
   for classFile in $classFiles; do
-      className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
-      path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
-      if [[ "$className" == *'$'* ]]; then
-        continue
-      fi
-      echo ""
-      echo "Launching $className"
-      echo ""
-      mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
+    className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
+    path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
+    if ! result=$(jim "$classFile"); then
+      echo "$result"
+      break
+    fi
+    if [[ "$result" == "There is no main method in"* ]]; then
+      continue
+    fi
+    echo ""
+    echo "Launching $className"
+    echo ""
+    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
   done
 }
 
@@ -126,16 +134,18 @@ function mejaa() {
     return 1
   fi
   for classFile in $classFiles; do
-      main1=$(javap "$classFile" | grep "public static void main(java.lang.String\[\])" 2>&1)
-      main2=$(javap "$classFile" | grep "public static final void main(java.lang.String\[\])" 2>&1)
-      className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
-      path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
-      if [[ "$main1" == "" ]] && [[ "$main2" == "" ]]; then
-        continue
-      fi
-      echo ""
-      echo "Launching $className"
-      echo ""
-      mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
+    if ! result=$(jim "$classFile"); then
+      echo "$result"
+      break
+    fi
+    if [[ "$result" == "There is no main method in"* ]]; then
+      continue
+    fi
+    className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
+    path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
+    echo ""
+    echo "Launching $className"
+    echo ""
+    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
   done
 }

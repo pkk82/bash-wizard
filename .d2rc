@@ -1,0 +1,10 @@
+# d2w - d2 -w <file> -o /tmp/<file>.svg
+function d2w() {
+  if [[ "$1" == "" ]]; then
+    echo "d2w <file>"
+    return
+  fi
+  tempFile=$(mktemp d2-XXXXXX.svg)
+  d2 -w "$1" "$tempFile"
+  rm -f "$tempFile"
+}

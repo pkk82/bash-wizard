@@ -51,27 +51,29 @@ function addFileLoadingByRcFile() {
   fi
 }
 
+function createMainRcFile() {
+  mainRcFile="$1/.bwrc"
+  rm -rf "$mainRcFile"
+  for f in .*rc; do
+    fileName=$(basename "$f")
+    echo ". $1/$fileName" >> "$mainRcFile"
+  done
+}
+
+function createRcFiles() {
+  for f in .*rc; do
+    fileName=$(basename "$f")
+    cat "$f" >"$1/$fileName"
+  done
+}
+
 # create config directory
 confDir=$(configDir)
 rm -rf "$confDir"
 mkdir -p "$confDir"
-mainRcFile="$confDir/.bwrc"
 
-# create main rc file
-cat >"$mainRcFile" <<EOL
-. "$confDir/.gitrc"
-. "$confDir/.javarc"
-. "$confDir/.mavenrc"
-. "$confDir/.dockerrc"
-. "$confDir/.functionsrc"
-EOL
-
-# create
-. ./git.sh
-. ./java.sh
-. ./maven.sh
-. ./docker.sh
-. ./functions.sh
+createMainRcFile "$confDir"
+createRcFiles "$confDir"
 
 # modify rc files to include bwrc
 addFileLoadingByRcFiles "$confDir/.bwrc"

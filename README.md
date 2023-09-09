@@ -36,6 +36,10 @@ To automatically update the README.md file with the latest aliases and functions
 
 ## Aliases & Functions
 
+### BASHWIZARD
+    # bash-wizard help
+    bw
+
 ### DOCKER
     # docker-compose
     dc

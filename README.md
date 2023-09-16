@@ -40,6 +40,10 @@ To automatically update the README.md file with the latest aliases and functions
     # bash-wizard help
     bw
 
+### D2
+    # d2 -w <file> -o /tmp/<file>.svg
+    d2w
+
 ### DOCKER
     # docker-compose
     dc
@@ -110,6 +114,12 @@ To automatically update the README.md file with the latest aliases and functions
 
     # git pull && git push origin <current branch>
     gppo
+
+    # git push gh <current branch>
+    gpgh
+
+    # git push bb <current branch>
+    gpbb
 
     # git checkout <branch>
     gc <branch>

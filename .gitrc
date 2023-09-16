@@ -37,6 +37,12 @@ alias gpot='git push origin --tags'
 # gppo - git pull && git push origin <current branch>
 alias gppo='git pull && git push origin $(git rev-parse --abbrev-ref HEAD)'
 
+# gpgh - git push gh <current branch>
+alias gpgh='git push gh $(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+
+# gpbb - git push bb <current branch>
+alias gpbb='git push bb $(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+
 # gc <branch> - git checkout <branch>
 alias gc='git checkout'
 

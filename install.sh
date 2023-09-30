@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function printInfo() {
   printf "\e[1;36m%s\e[0m\n" "$1"
 }
@@ -40,15 +42,16 @@ function addFileLoadingByRcFile() {
   local rcFileExists
   rcFile="$1"
   loadedFile="$2"
+  loadedFileName=${loadedFile//$HOME/}
   rcFileExists=$(verifyFile "$rcFile")
   if [[ "$rcFileExists" == "1" ]]; then
-    if grep -q "$loadedFile" "$rcFile"; then
+    if grep -q "$loadedFileName" "$rcFile"; then
       printInfo "$rcFile loads $loadedFile"
     else
-      printUpdateInfo "modifying $rcFile to $loadedFile"
+      printUpdateInfo "modifying $rcFile to load $loadedFileName"
       {
         echo -e "\n### bash-wizard"
-        echo -e "[[ -s \"$loadedFile\" ]] && . \"$loadedFile\"\n"
+        echo -e "[[ -s \"\$HOME$loadedFileName\" ]] && . \"\$HOME$loadedFileName\"\n"
       } >>"$rcFile"
       sed -i '/^$/N;/^\n$/D' "$rcFile"
     fi
@@ -56,11 +59,13 @@ function addFileLoadingByRcFile() {
 }
 
 function createMainRcFile() {
-  mainRcFile="$1/.bwrc"
+  path="$1"
+  pathNoHome=${path//$HOME/}
+  mainRcFile="$path/.bwrc"
   rm -rf "$mainRcFile"
   for f in .*rc; do
     fileName=$(basename "$f")
-    echo ". $1/$fileName" >>"$mainRcFile"
+    echo ". \"\$HOME$pathNoHome/$fileName\"" >>"$mainRcFile"
   done
 }
 

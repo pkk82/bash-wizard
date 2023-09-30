@@ -46,7 +46,11 @@ function addFileLoadingByRcFile() {
       printInfo "$rcFile loads $loadedFile"
     else
       printUpdateInfo "modifying $rcFile to $loadedFile"
-      echo "[[ -s \"$loadedFile\" ]] && . \"$loadedFile\"" >>"$rcFile"
+      {
+        echo -e "\n### bash-wizard"
+        echo -e "[[ -s \"$loadedFile\" ]] && . \"$loadedFile\"\n"
+      } >>"$rcFile"
+      sed -i '/^$/N;/^\n$/D' "$rcFile"
     fi
   fi
 }
@@ -56,7 +60,7 @@ function createMainRcFile() {
   rm -rf "$mainRcFile"
   for f in .*rc; do
     fileName=$(basename "$f")
-    echo ". $1/$fileName" >> "$mainRcFile"
+    echo ". $1/$fileName" >>"$mainRcFile"
   done
 }
 
@@ -83,5 +87,3 @@ printInfo "To load the commands in your current session type:"
 printCommand "source $mainRcFile"
 printInfo "To see available commands:"
 printCommand "bash-wizard"
-
-

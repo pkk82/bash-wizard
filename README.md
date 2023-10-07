@@ -40,6 +40,9 @@ To automatically update the README.md file with the latest aliases and functions
     # bash-wizard help
     bw
 
+    # bash-wizard update
+    bwu
+
 ### D2
     # d2 -w <file> -o /tmp/<file>.svg
     d2w

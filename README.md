@@ -275,6 +275,10 @@ To automatically update the README.md file with the latest aliases and functions
     # check if java class is main class
     jim <class file path>
 
+### MACOS
+    # replaces the right command key with right option key
+    replace-right-command-and-right-option
+
 ### MAVEN
     # mvn clean install
     mci

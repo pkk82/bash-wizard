@@ -16,6 +16,11 @@ function configDir() {
   echo "$HOME/.bash-wizard"
 }
 
+function selfDir() {
+   scriptPath=$(readlink -f "$0")
+   dirname "$scriptPath"
+}
+
 function verifyFile() {
   local file
   file=$1
@@ -60,17 +65,19 @@ function addFileLoadingByRcFile() {
 
 function createMainRcFile() {
   path="$1"
+  selfDir=$(selfDir)
   pathNoHome=${path//$HOME/}
   mainRcFile="$path/.bwrc"
   rm -rf "$mainRcFile"
-  for f in .*rc; do
+  for f in "$selfDir"/.*rc; do
     fileName=$(basename "$f")
     echo ". \"\$HOME$pathNoHome/$fileName\"" >>"$mainRcFile"
   done
 }
 
 function createRcFiles() {
-  for f in .*rc; do
+  selfDir=$(selfDir)
+  for f in "$selfDir"/.*rc; do
     fileName=$(basename "$f")
     cat "$f" >"$1/$fileName"
   done

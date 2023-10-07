@@ -3,7 +3,8 @@ alias bw='bash-wizard'
 
 # bwu - bash-wizard update
 function bwu() {
-    git clone https://github.com/pkk82/bash-wizard.git "$HOME/.bash-wizard/repo"
-    "$HOME/.bash-wizard/repo/install.sh"
-    rm -rf "$HOME/.bash-wizard/repo"
+    repoDir="$HOME/.bash-wizard-repo-$(date +%s)"
+    git clone https://github.com/pkk82/bash-wizard.git "$repoDir"
+    "$repoDir/install.sh"
+    rm -rf "$repoDir"
 }

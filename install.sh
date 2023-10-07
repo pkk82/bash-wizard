@@ -17,7 +17,7 @@ function configDir() {
 }
 
 function selfDir() {
-   scriptPath=$(readlink -f "$0")
+   scriptPath=$(realpath "$0")
    dirname "$scriptPath"
 }
 

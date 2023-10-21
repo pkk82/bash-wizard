@@ -217,6 +217,9 @@ To automatically update the README.md file with the latest aliases and functions
     # git rebase origin/<main-branch>
     grom
 
+    # git merge origin/<main-branch>
+    gmom
+
     # remove merged branches
     gbdm
 

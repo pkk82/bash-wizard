@@ -165,6 +165,15 @@ function grom() {
   fi
 }
 
+# gmom - git merge origin/<main-branch>
+function gmom() {
+  if [[ "$(g-c)" == "1" ]]; then
+    git merge "origin/$(g-mb)"
+  else
+    echo "Not inside a git repository."
+  fi
+}
+
 # gbdm - remove merged branches
 function gbdm() {
   if [[ "$(g-c)" == "1" ]]; then

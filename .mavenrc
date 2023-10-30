@@ -78,7 +78,7 @@ function mej() {
   fi
   for classFile in $classFiles; do
     className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
-    path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
+    pathToPom=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
     if ! result=$(jim "$classFile"); then
       echo "$result"
       break
@@ -89,7 +89,7 @@ function mej() {
     echo ""
     echo "Launching $className"
     echo ""
-    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
+    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$pathToPom/pom.xml"
     break
   done
 }
@@ -111,7 +111,7 @@ function meja() {
   fi
   for classFile in $classFiles; do
     className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
-    path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
+    pathToPom=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
     if ! result=$(jim "$classFile"); then
       echo "$result"
       break
@@ -122,7 +122,7 @@ function meja() {
     echo ""
     echo "Launching $className"
     echo ""
-    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
+    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$pathToPom/pom.xml"
   done
 }
 
@@ -142,10 +142,10 @@ function mejaa() {
       continue
     fi
     className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
-    path=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
+    pathToPom=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
     echo ""
     echo "Launching $className"
     echo ""
-    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$path/pom.xml"
+    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$pathToPom/pom.xml"
   done
 }

@@ -65,18 +65,19 @@ function mej() {
   fi
 
   term="${1//./_}"
-  classFiles=$(find . -type f -name "$term*.class")
-  if [[ "$classFiles" == "" ]]; then
-    classFiles=$(find . -type f -name "_$term*.class")
+  classFiles=()
+  while IFS="" read -r line; do classFiles+=("$line"); done < <(find . -type f -name "$term*.class")
+  if [[ "${#classFiles[@]}" == "0" ]]; then
+    while IFS="" read -r line; do classFiles+=("$line"); done < <(find . -type f -name "_$term*.class")
   fi
-  if [[ "$classFiles" == "" ]]; then
-    classFiles=$(find . -type f -name "*$term*.class")
+  if [[ "${#classFiles[@]}" == "0" ]]; then
+    while IFS="" read -r line; do classFiles+=("$line"); done < <(find . -type f -name "*$term*.class")
   fi
-  if [[ "$classFiles" == "" ]]; then
+  if [[ "${#classFiles[@]}" == "0" ]]; then
     echo "Classes not found - did you compile your project?"
     return 1
   fi
-  for classFile in $classFiles; do
+  for classFile in "${classFiles[@]}"; do
     className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
     pathToPom=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
     if ! result=$(jim "$classFile"); then
@@ -104,12 +105,13 @@ function meja() {
   fi
 
   term="${1//./_}"
-  classFiles=$(find . -type f -name "*$term*.class")
-  if [[ "$classFiles" == "" ]]; then
+  classFiles=()
+  while IFS="" read -r line; do classFiles+=("$line"); done < <(find . -type f -name "*$term*.class")
+  if [[ "${#classFiles[@]}" == "0" ]]; then
     echo "Classes not found - did you compile your project?"
     return 1
   fi
-  for classFile in $classFiles; do
+  for classFile in "${classFiles[@]}"; do
     className=$(echo "$classFile" | sed 's/.*\/target\/classes\///g' | sed 's/\.class//g' | sed 's/\//\./g')
     pathToPom=$(echo "$classFile" | sed 's/\/target\/classes\/.*//g')
     if ! result=$(jim "$classFile"); then
@@ -128,12 +130,13 @@ function meja() {
 
 # mejaa - launch all compiled class using maven exec plugin, pass arguments to main classes as subsequent ones
 function mejaa() {
-  classFiles=$(find . -type f -name "*$term*.class")
-  if [[ "$classFiles" == "" ]]; then
+  classFiles=()
+  while IFS="" read -r line; do classFiles+=("$line"); done < <(find . -type f -name "*$term*.class")
+  if [[ "${#classFiles[@]}" == "0" ]]; then
     echo "Classes not found - did you compile your project?"
     return 1
   fi
-  for classFile in $classFiles; do
+  for classFile in "${classFiles[@]}"; do
     if ! result=$(jim "$classFile"); then
       echo "$result"
       break

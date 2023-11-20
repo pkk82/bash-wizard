@@ -41,6 +41,20 @@ function addFileLoadingByRcFiles() {
   done
 }
 
+function sedInFile() {
+  local sedInplace
+  local file
+  local replacement
+  replacement="$1"
+  file="$2"
+  if [[ $(uname) == "Darwin" ]]; then
+    sedInplace="-i ''"
+  else
+    sedInplace="-i"
+  fi
+  sed $sedInplace "$replacement" "$file"
+}
+
 function addFileLoadingByRcFile() {
   local rcFile
   local loadedFile
@@ -58,7 +72,7 @@ function addFileLoadingByRcFile() {
         echo -e "\n### bash-wizard"
         echo -e "[[ -s \"\$HOME$loadedFileName\" ]] && . \"\$HOME$loadedFileName\"\n"
       } >>"$rcFile"
-      sed -i '/^$/N;/^\n$/D' "$rcFile"
+      sedInFile '/^$/N;/^\n$/D' "$rcFile"
     fi
   fi
 }

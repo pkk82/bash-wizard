@@ -1,0 +1,38 @@
+# english-download-mp3-pronunciation-from-google - download two mp3 files with British and American pronunciation for provided word
+function english-download-mp3-pronunciation-from-google() {
+  if [[ "$1" == "" ]]; then
+    echo "Use: ${FUNCNAME[0]} <english word>"
+    return 1
+  fi
+  local word
+  word="$1"
+  gbUrl="https://ssl.gstatic.com/dictionary/static/sounds/oxford/$word--_gb_1.mp3"
+  usUrl="https://ssl.gstatic.com/dictionary/static/sounds/oxford/$word--_us_1.mp3"
+
+  response=$(curl -s -o "${word}_gb.mp3" -w "%{http_code}" "$gbUrl")
+  success=0
+  if [ "$response" -eq 200 ]; then
+    echo "Download successful! Content saved to ${word}_gb.mp3"
+  elif [ "$response" -eq 404 ]; then
+    echo "File $gbUrl not found"
+    success=1
+  else
+    echo "The request failed with HTTP status: $response"
+    success=1
+  fi
+
+  response=$(curl -s -o "${word}_us.mp3" -w "%{http_code}" "$usUrl")
+  if [ "$response" -eq 200 ]; then
+    echo "Download successful! Content saved to ${word}_us.mp3"
+  elif [ "$response" -eq 404 ]; then
+    echo "File $usUrl not found"
+    success=1
+  else
+    echo "The request failed with HTTP status: $response"
+    success=1
+  fi
+
+  if [[ "$success" -eq 1 ]]; then
+    return 1
+  fi
+}

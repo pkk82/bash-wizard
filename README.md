@@ -78,6 +78,10 @@ To automatically update the README.md file with the latest aliases and functions
     # docker-compose down && docker-compose up -d --build
     dcdudb
 
+### ENGLISH
+    # download two mp3 files with British and American pronunciation for provided word
+    english-download-mp3-pronunciation-from-google
+
 ### GIT
     # git pull
     gp

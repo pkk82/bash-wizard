@@ -15,9 +15,11 @@ function english-download-mp3-pronunciation-from-google() {
     echo "Download successful! Content saved to ${word}_gb.mp3"
   elif [ "$response" -eq 404 ]; then
     echo "File $gbUrl not found"
+    rm -f "${word}_gb.mp3"
     success=1
   else
     echo "The request failed with HTTP status: $response"
+    rm -f "${word}_gb.mp3"
     success=1
   fi
 
@@ -26,9 +28,11 @@ function english-download-mp3-pronunciation-from-google() {
     echo "Download successful! Content saved to ${word}_us.mp3"
   elif [ "$response" -eq 404 ]; then
     echo "File $usUrl not found"
+    rm -f "${word}_us.mp3"
     success=1
   else
     echo "The request failed with HTTP status: $response"
+    rm -f "${word}_us.mp3"
     success=1
   fi
 

@@ -287,7 +287,7 @@ To automatically update the README.md file with the latest aliases and functions
 
 ### MACOS
     # replaces the right command key with right option key
-    replace-right-command-and-right-option
+    macos-replace-right-command-and-right-option
 
 ### MAVEN
     # mvn clean install
@@ -344,9 +344,14 @@ To automatically update the README.md file with the latest aliases and functions
     # launch compiled class using maven exec plugin, pass term matching main class as first argument and arguments to main class as subsequent ones
     mej
 
+  if [[ "${classFiles[@]}" == "0" ]]; then
+  if [[ "${classFiles[@]}" == "0" ]]; then
+  if [[ "${classFiles[@]}" == "0" ]]; then
     # launch all compiled class using maven exec plugin, pass term matching main class as first argument and arguments to main class as subsequent ones
     meja
 
+  if [[ "${classFiles[@]}" == "0" ]]; then
     # launch all compiled class using maven exec plugin, pass arguments to main classes as subsequent ones
     mejaa
 
+  if [[ "${classFiles[@]}" == "0" ]]; then

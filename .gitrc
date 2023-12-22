@@ -61,6 +61,17 @@ alias gbd='git branch -D'
 # gbm - git branch --merged
 alias gbm='git branch --merged'
 
+# gbsuto - git branch --set-upstream-to=origin/<branch> <branch>
+function gbsuto() {
+  local branch
+  if [[ "$(g-c)" == "1" ]]; then
+    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    git branch --set-upstream-to="origin/$branch" "$branch"
+  else
+    echo "Not inside a git repository."
+  fi
+}
+
 # gl1 - git log --oneline -n 1
 alias gl1='git log --oneline -n 1'
 

@@ -101,6 +101,9 @@ To automatically update the README.md file with the latest aliases and functions
     # git push origin <current branch>
     gpo
 
+    # git push origin --all
+    gpoall
+
     # git push origin HEAD~1:refs/heads/<current branch>
     gpo1
 
@@ -125,8 +128,14 @@ To automatically update the README.md file with the latest aliases and functions
     # git push gh <current branch>
     gpgh
 
+    # git push gh --all
+    gpghall
+
     # git push bb <current branch>
     gpbb
+
+    # git push bb --all
+    gpbball
 
     # git checkout <branch>
     gc <branch>
@@ -145,6 +154,9 @@ To automatically update the README.md file with the latest aliases and functions
 
     # git branch --merged
     gbm
+
+    # git branch --set-upstream-to=origin/<branch> <branch>
+    gbsuto
 
     # git log --oneline -n 1
     gl1
@@ -348,14 +360,9 @@ To automatically update the README.md file with the latest aliases and functions
     # launch compiled class using maven exec plugin, pass term matching main class as first argument and arguments to main class as subsequent ones
     mej
 
-  if [[ "${classFiles[@]}" == "0" ]]; then
-  if [[ "${classFiles[@]}" == "0" ]]; then
-  if [[ "${classFiles[@]}" == "0" ]]; then
     # launch all compiled class using maven exec plugin, pass term matching main class as first argument and arguments to main class as subsequent ones
     meja
 
-  if [[ "${classFiles[@]}" == "0" ]]; then
     # launch all compiled class using maven exec plugin, pass arguments to main classes as subsequent ones
     mejaa
 
-  if [[ "${classFiles[@]}" == "0" ]]; then

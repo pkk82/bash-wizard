@@ -16,6 +16,9 @@ alias gf='git fetch'
 # gpo - git push origin <current branch>
 alias gpo='git push origin $(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
+# gpoall - git push origin --all
+alias gpo='git push origin --all'
+
 # gpo1 - git push origin HEAD~1:refs/heads/<current branch>
 alias gpo1='git push origin HEAD~1:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'\
 
@@ -40,8 +43,14 @@ alias gppo='git pull && git push origin $(git rev-parse --abbrev-ref HEAD)'
 # gpgh - git push gh <current branch>
 alias gpgh='git push gh $(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
+# gpghall - git push gh --all
+alias gpghall='git push gh --all'
+
 # gpbb - git push bb <current branch>
 alias gpbb='git push bb $(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+
+# gpbball - git push bb --all
+alias gpbball='git push bb --all'
 
 # gc <branch> - git checkout <branch>
 alias gc='git checkout'

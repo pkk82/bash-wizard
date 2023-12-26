@@ -86,6 +86,9 @@ To automatically update the README.md file with the latest aliases and functions
     # git pull
     gp
 
+    # git pull --all
+    gpall
+
     # git status
     gs
 

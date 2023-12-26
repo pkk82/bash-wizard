@@ -1,6 +1,9 @@
 # gp - git pull
 alias gp='git pull'
 
+# gpall - git pull --all
+alias gpall='git pull --all'
+
 # gs - git status
 alias gs='git status'
 

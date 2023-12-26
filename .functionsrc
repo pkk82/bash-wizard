@@ -7,7 +7,7 @@ function bash-wizard() {
     [[ "$fileName" != ".functionsrc" ]] || continue
     [[ "$search" == "" ]] || [[ $fileName =~ ^\..*$search.*rc$ ]] || continue
     echo "${fileName}" | sed 's/\.//g' | sed 's/rc//g' | tr '[:lower:]' '[:upper:]'
-    grep "#" < "$f"
+    grep "^#" < "$f"
     echo ""
   done
 }
@@ -19,7 +19,7 @@ function bash-wizard-md() {
     [[ "$fileName" != ".bwrc" ]] || continue
     [[ "$fileName" != ".functionsrc" ]] || continue
     echo "### ${fileName}" | sed 's/\.//g' | sed 's/rc//g' | tr '[:lower:]' '[:upper:]'
-    grep "#" < "$f" | sed 's/#//g' | sed 's/\(.*\) - \(.*\)/    # \2\n   \1\n/g'
+    grep "^#" < "$f" | sed 's/#//g' | sed 's/\(.*\) - \(.*\)/    # \2\n   \1\n/g'
     echo ""
   done
 }

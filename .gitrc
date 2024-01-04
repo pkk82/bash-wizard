@@ -20,7 +20,7 @@ alias gf='git fetch'
 alias gpo='git push origin $(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
 # gpoall - git push origin --all
-alias gpo='git push origin --all'
+alias gpoall='git push origin --all'
 
 # gpo1 - git push origin HEAD~1:refs/heads/<current branch>
 alias gpo1='git push origin HEAD~1:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'\

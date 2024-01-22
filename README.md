@@ -296,6 +296,9 @@ To automatically update the README.md file with the latest aliases and functions
     # git reset --hard HEAD~9
     ghr9
 
+    # git stash -u
+    gsu
+
 ### JAVA
     # check if java class is main class
     jim <class file path>

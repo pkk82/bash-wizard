@@ -277,3 +277,7 @@ alias ghr8='git reset --hard HEAD~8'
 # ghr9 - git reset --hard HEAD~9
 alias ghr9='git reset --hard HEAD~9'
 
+# gsu - git stash -u
+alias gsu='git stash -u'
+
+

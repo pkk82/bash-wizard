@@ -138,6 +138,12 @@ alias gri8='git rebase -i HEAD~8'
 # gri9 - git rebase -i HEAD~9
 alias gri9='git rebase -i HEAD~9'
 
+# grc - git rebase --continue
+alias grc='git rebase --continue'
+
+# gra - git rebase --abort
+alias gra='git rebase --abort'
+
 # grv - git remote -v
 alias grv='git remote -v'
 

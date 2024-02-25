@@ -134,11 +134,17 @@ To automatically update the README.md file with the latest aliases and functions
     # git push gh --all
     gpghall
 
+    # git push gh --tags
+    gpght
+
     # git push bb <current branch>
     gpbb
 
     # git push bb --all
     gpbball
+
+    # git push bb --tags
+    gpbbt
 
     # git checkout <branch>
     gc <branch>

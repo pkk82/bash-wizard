@@ -49,11 +49,17 @@ alias gpgh='git push gh $(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 # gpghall - git push gh --all
 alias gpghall='git push gh --all'
 
+# gpght - git push gh --tags
+alias gpght='git push gh --tags'
+
 # gpbb - git push bb <current branch>
 alias gpbb='git push bb $(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
 # gpbball - git push bb --all
 alias gpbball='git push bb --all'
+
+# gpbbt - git push bb --tags
+alias gpbbt='git push bb --tags'
 
 # gc <branch> - git checkout <branch>
 alias gc='git checkout'

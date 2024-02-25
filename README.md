@@ -378,3 +378,6 @@ To automatically update the README.md file with the latest aliases and functions
     # launch all compiled class using maven exec plugin, pass arguments to main classes as subsequent ones
     mejaa
 
+    # mvn versions:display-plugin-updates
+    mvdpu
+

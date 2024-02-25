@@ -152,3 +152,6 @@ function mejaa() {
     mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$pathToPom/pom.xml"
   done
 }
+
+# mvdpu - mvn versions:display-plugin-updates
+alias mvdpu='mvn versions:display-plugin-updates'

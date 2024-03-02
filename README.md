@@ -48,6 +48,9 @@ To automatically update the README.md file with the latest aliases and functions
     d2w
 
 ### DOCKER
+    # docker exec -it <container> /bin/bash
+    dbash <container>
+
     # docker-compose
     dc
 

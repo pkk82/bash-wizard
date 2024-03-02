@@ -1,3 +1,14 @@
+# dbash <container> - docker exec -it <container> /bin/bash
+function dbash() {
+  local container
+  if [[ "$1" == "" ]]; then
+    echo "Use: dbash <container>"
+    return 1
+  fi
+  container="$1"
+  docker exec -it "$container" /bin/bash
+}
+
 # dc - docker-compose
 alias dc='docker-compose'
 

@@ -57,6 +57,12 @@ To automatically update the README.md file with the latest aliases and functions
     # docker-compose up
     dcu
 
+    # docker-compose start
+    dcstart
+
+    # docker-compose stop
+    dcstop
+
     # docker-compose up -d
     dcud
 

@@ -15,6 +15,12 @@ alias dc='docker-compose'
 # dcu - docker-compose up
 alias dcu='docker-compose up'
 
+# dcstart - docker-compose start
+alias dcstart='docker-compose start'
+
+# dcstop - docker-compose stop
+alias dcstop='docker-compose stop'
+
 # dcud - docker-compose up -d
 alias dcud='docker-compose up -d'
 

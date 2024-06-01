@@ -78,6 +78,9 @@ To automatically update the README.md file with the latest aliases and functions
     # docker-compose down
     dcd
 
+    # docker-compose down -v
+    dcdv
+
     # docker-compose restart
     dcr
 

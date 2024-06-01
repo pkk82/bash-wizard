@@ -36,6 +36,9 @@ alias dclf='docker-compose logs -f'
 # dcd - docker-compose down
 alias dcd='docker-compose down'
 
+# dcdv - docker-compose down -v
+alias dcdv='docker-compose down -v'
+
 # dcr - docker-compose restart
 alias dcr='docker-compose restart'
 

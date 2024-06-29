@@ -1,0 +1,24 @@
+# ii - launch IntelliJ IDEA with current directory as project
+function ii {
+  local pwd
+  local dir
+  local intellijHome
+  pwd=$(pwd)
+  dir=$(basename "$pwd")
+  if [ -n "$INTELLIJ_HOME" ]; then
+    intellijHome="$INTELLIJ_HOME"
+  fi
+  if [ -n "$INTELLIJ_IDEA_HOME" ]; then
+    intellijHome="$INTELLIJ_IDEA_HOME"
+  fi
+  if [ -n "$IDEA_HOME" ]; then
+    intellijHome="$IDEA_HOME"
+  fi
+
+  if [ -z "$intellijHome" ]; then
+    echo "The variable INTELLIJ_HOME or INTELLIJ_IDEA_HOME or IDEA_HOME is not defined"
+    return 1
+  fi
+
+  "$intellijHome/bin/idea.sh" "../$dir" 1> /dev/null 2>&1 &
+}

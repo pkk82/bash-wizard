@@ -327,6 +327,10 @@ To automatically update the README.md file with the latest aliases and functions
     # git stash -u
     gsu
 
+### INTELLIJ
+    # launch IntelliJ IDEA with current directory as project
+    ii
+
 ### JAVA
     # check if java class is main class
     jim <class file path>

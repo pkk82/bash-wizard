@@ -1,0 +1,15 @@
+# fgr - find files in given directory containing a term
+function fgr() {
+  local dir
+  local term
+
+  if [[ "$2" == "" ]]; then
+    echo "Use: fgr <directory> <term>"
+    return 1
+  fi
+
+  dir="$1"
+  term="$2"
+
+  find "$dir" -type f -exec grep -l "$term" {} \; 2>/dev/null
+}

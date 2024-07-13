@@ -1,4 +1,4 @@
-# fgr - find files in given directory containing a term
+# fgr <dir> <term> - find files in given directory containing a term
 function fgr() {
   local dir
   local term

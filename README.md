@@ -96,7 +96,7 @@ To automatically update the README.md file with the latest aliases and functions
 
 ### FIND
     # find files in given directory containing a term
-    fgr
+    fgr <dir> <term>
 
 ### GIT
     # git pull

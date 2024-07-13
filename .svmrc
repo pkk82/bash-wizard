@@ -1,0 +1,37 @@
+# svmd - download software
+function svmd() {
+  local version
+  local unameOsName
+  local osName
+  local unameArch
+  local arch
+
+  version=$(curl -s https://api.github.com/repos/pkk82/soft-ver-man/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
+
+  unameOsName=$(uname)
+  if [[ "$unameOsName" == "Linux" ]]; then
+    osName="linux"
+  elif [[ "$unameOsName" == "Darwin" ]]; then
+    osName="darwin"
+  elif [[ "$unameOsName" == "CYGWIN"* || "$unameOsName" == "MINGW"* || "$unameOsName" == "MSYS"* ]]; then
+    osName="win"
+  else
+    echo "Unsupported OS: $unameOsName"
+    exit 1
+  fi
+
+  unameArch=$(uname -m)
+  if [[ "$unameArch" == "x86_64" ]]; then
+    arch="amd64"
+  elif [[ "$unameArch" == "aarch64" ]]; then
+    arch="arm64"
+  else
+    echo "Unsupported arch: $unameArch"
+    exit 1
+  fi
+
+  curl -O "https://github.com/pkk82/soft-ver-man/releases/download/$version/soft-ver-man-$version-$arch-$osName"
+  if [[ "$osName" != "win" ]]; then
+    chmod +x "./soft-ver-man-$version-$arch-$osName"
+  fi
+}

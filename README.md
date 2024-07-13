@@ -407,3 +407,7 @@ To automatically update the README.md file with the latest aliases and functions
     # mvn versions:display-plugin-updates
     mvdpu
 
+### SVM
+    # download software
+    svmd
+

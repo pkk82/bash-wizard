@@ -98,6 +98,9 @@ To automatically update the README.md file with the latest aliases and functions
     # find files in given directory containing a term
     fgr <dir> <term>
 
+    # display content of files in given directory with given name
+    fca <dir> <file>
+
 ### GIT
     # git pull
     gp

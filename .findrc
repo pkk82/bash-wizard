@@ -13,3 +13,21 @@ function fgr() {
 
   find "$dir" -type f -exec grep -l "$term" {} \; 2>/dev/null
 }
+
+
+# fca <dir> <file> - display content of files in given directory with given name
+function fca() {
+  local dir
+  local name
+
+  if [[ "$2" == "" ]]; then
+    echo "Use: fgr <directory> <name>"
+    return 1
+  fi
+
+  dir="$1"
+  name="$2"
+
+  find "$dir" -type f -name "$name" -print -exec cat {} \; 2>/dev/null
+}
+

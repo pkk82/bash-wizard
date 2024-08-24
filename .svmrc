@@ -6,6 +6,7 @@ function svmd() {
   local unameArch
   local arch
   local archSupported
+  local artifactName
 
   version=$(curl -s https://api.github.com/repos/pkk82/soft-ver-man/releases/latest | grep '"tag_name"' | sed -E 's/.*"tag_name":[[:space:]]*"([^"]+)".*/\1/')
 
@@ -44,7 +45,13 @@ function svmd() {
     return 1
   fi
 
-  curl -O "https://github.com/pkk82/soft-ver-man/releases/download/$version/soft-ver-man-$version-$arch-$osName"
+  artifactName="soft-ver-man-$version-$arch-$osName"
+  if curl -O "https://github.com/pkk82/soft-ver-man/releases/download/$version/$artifactName"; then
+    echo "$artifactName downloaded"
+  else
+    echo "Download failed"
+    return 1
+  fi
   if [[ "$osName" != "win" ]]; then
     chmod +x "./soft-ver-man-$version-$arch-$osName"
   fi

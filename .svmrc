@@ -5,6 +5,7 @@ function svmd() {
   local osName
   local unameArch
   local arch
+  local archSupported
 
   version=$(curl -s https://api.github.com/repos/pkk82/soft-ver-man/releases/latest | grep '"tag_name"' | sed -E 's/.*"tag_name":\s*"([^"]+)".*/\1/')
 
@@ -20,13 +21,26 @@ function svmd() {
     return 1
   fi
 
+  supportedArchitectures=("amd64" "arm64")
   unameArch=$(uname -m)
   if [[ "$unameArch" == "x86_64" ]]; then
     arch="amd64"
   elif [[ "$unameArch" == "aarch64" ]]; then
     arch="arm64"
   else
-    echo "Unsupported arch: $unameArch"
+    arch="$unameArch"
+  fi
+
+  archSupported="0"
+  for element in "${supportedArchitectures[@]}"; do
+    if [[ "$element" == "$arch" ]]; then
+      archSupported="1"
+      break
+    fi
+  done
+
+  if [[ "$archSupported" == "0" ]]; then
+    echo "Unsupported arch: $arch"
     return 1
   fi
 
@@ -34,4 +48,5 @@ function svmd() {
   if [[ "$osName" != "win" ]]; then
     chmod +x "./soft-ver-man-$version-$arch-$osName"
   fi
+
 }

@@ -17,7 +17,7 @@ function svmd() {
     osName="win"
   else
     echo "Unsupported OS: $unameOsName"
-    exit 1
+    return 1
   fi
 
   unameArch=$(uname -m)
@@ -27,7 +27,7 @@ function svmd() {
     arch="arm64"
   else
     echo "Unsupported arch: $unameArch"
-    exit 1
+    return 1
   fi
 
   curl -O "https://github.com/pkk82/soft-ver-man/releases/download/$version/soft-ver-man-$version-$arch-$osName"

@@ -45,6 +45,7 @@ function addFileLoadingByRcFiles() {
   if [[ "$rcExists" != "1" ]]; then
     newRcFilePath="$HOME/.$(basename "$SHELL")rc"
     printInfo "No rc file found, creating $newRcFilePath"
+    touch "$newRcFilePath"
     addFileLoadingByRcFile "$newRcFilePath" "$1"
   fi
 

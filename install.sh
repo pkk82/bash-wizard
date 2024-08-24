@@ -33,12 +33,21 @@ function verifyFile() {
 
 function addFileLoadingByRcFiles() {
   local rcCandidates
+  local rcExists
+  local newRcFilePath
   rcCandidates=("$HOME/.bashrc" "$HOME/.zshrc")
   for candidate in "${rcCandidates[@]}"; do
     if [[ $(verifyFile "$candidate") == "1" ]]; then
       addFileLoadingByRcFile "$candidate" "$1"
+      rcExists="1"
     fi
   done
+  if [[ "$rcExists" != "1" ]]; then
+    newRcFilePath="$HOME/.$(basename "$SHELL")rc"
+    printInfo "No rc file found, creating $newRcFilePath"
+    addFileLoadingByRcFile "$newRcFilePath" "$1"
+  fi
+
 }
 
 function sedInFile() {

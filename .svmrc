@@ -1,4 +1,4 @@
-# svmd - download software
+# svmd - download soft-ver-man
 function svmd() {
   local version
   local unameOsName
@@ -6,7 +6,7 @@ function svmd() {
   local unameArch
   local arch
 
-  version=$(curl -s https://api.github.com/repos/pkk82/soft-ver-man/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
+  version=$(curl -s https://api.github.com/repos/pkk82/soft-ver-man/releases/latest | grep '"tag_name"' | sed -E 's/.*"tag_name":\s*"([^"]+)".*/\1/')
 
   unameOsName=$(uname)
   if [[ "$unameOsName" == "Linux" ]]; then

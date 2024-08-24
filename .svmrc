@@ -46,14 +46,14 @@ function svmd() {
   fi
 
   artifactName="soft-ver-man-$version-$arch-$osName"
-  if curl -O "https://github.com/pkk82/soft-ver-man/releases/download/$version/$artifactName"; then
+  if curl -L -s -f -o "$artifactName" "https://github.com/pkk82/soft-ver-man/releases/download/$version/$artifactName"; then
     echo "$artifactName downloaded"
   else
     echo "Download failed"
     return 1
   fi
   if [[ "$osName" != "win" ]]; then
-    chmod +x "./soft-ver-man-$version-$arch-$osName"
+    chmod +x "./$artifactName"
   fi
 
 }

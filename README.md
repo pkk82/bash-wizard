@@ -330,6 +330,12 @@ To automatically update the README.md file with the latest aliases and functions
     # git stash -u
     gsu
 
+    # git config --global core.pager cat
+    gdp (git-disable-pager)
+
+    # git config --global core.pager cat
+    git-disable-pager
+
 ### INTELLIJ
     # launch IntelliJ IDEA with current directory as project
     ii
@@ -411,6 +417,6 @@ To automatically update the README.md file with the latest aliases and functions
     mvdpu
 
 ### SVM
-    # download software
+    # download soft-ver-man
     svmd
 

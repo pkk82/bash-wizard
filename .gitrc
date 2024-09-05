@@ -292,4 +292,8 @@ alias ghr9='git reset --hard HEAD~9'
 # gsu - git stash -u
 alias gsu='git stash -u'
 
+# gdp (git-disable-pager) - git config --global core.pager cat
+alias gdp='git config --global core.pager cat'
 
+# git-disable-pager - git config --global core.pager cat
+alias git-disable-pager='git config --global core.pager cat'

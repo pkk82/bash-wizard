@@ -416,6 +416,19 @@ To automatically update the README.md file with the latest aliases and functions
     # mvn versions:display-plugin-updates
     mvdpu
 
+### PNPM
+    # npm install --location=global pnpm
+    pnpm-install-via-npm
+
+    # pnpm
+    p
+
+    # pnpm install
+    pi
+
+    # pnpm add <package>
+    pa
+
 ### SVM
     # download soft-ver-man
     svmd

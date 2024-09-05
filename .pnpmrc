@@ -1,0 +1,11 @@
+# pnpm-install-via-npm - npm install --location=global pnpm
+alias pnpm-install-via-npm='npm install --location=global pnpm'
+
+# p - pnpm
+alias p='pnpm'
+
+# pi - pnpm install
+alias pi='pnpm install'
+
+# pa - pnpm add <package>
+alias pa='pnpm add'

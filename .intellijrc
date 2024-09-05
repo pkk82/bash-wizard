@@ -2,23 +2,40 @@
 function ii {
   local pwd
   local dir
+  local unameOsName
   local intellijHome
   pwd=$(pwd)
   dir=$(basename "$pwd")
-  if [ -n "$INTELLIJ_HOME" ]; then
-    intellijHome="$INTELLIJ_HOME"
-  fi
-  if [ -n "$INTELLIJ_IDEA_HOME" ]; then
-    intellijHome="$INTELLIJ_IDEA_HOME"
-  fi
-  if [ -n "$IDEA_HOME" ]; then
-    intellijHome="$IDEA_HOME"
-  fi
+  unameOsName=$(uname)
 
-  if [ -z "$intellijHome" ]; then
-    echo "The variable INTELLIJ_HOME or INTELLIJ_IDEA_HOME or IDEA_HOME is not defined"
+  if [[ "$unameOsName" == "Linux" ]]; then
+
+     if [ -n "$INTELLIJ_HOME" ]; then
+       intellijHome="$INTELLIJ_HOME"
+     fi
+     if [ -n "$INTELLIJ_IDEA_HOME" ]; then
+       intellijHome="$INTELLIJ_IDEA_HOME"
+     fi
+     if [ -n "$IDEA_HOME" ]; then
+       intellijHome="$IDEA_HOME"
+     fi
+
+     if [ -z "$intellijHome" ]; then
+       echo "The variable INTELLIJ_HOME or INTELLIJ_IDEA_HOME or IDEA_HOME is not defined"
+       return 1
+     fi
+
+     "$intellijHome/bin/idea.sh" "../$dir" 1>/dev/null 2>&1 &
+
+  elif [[ "$unameOsName" == "Darwin" ]]; then
+
+    "/Applications/IntelliJ IDEA.app/Contents/MacOS/idea" "../$dir" 1>/dev/null 2>&1 &
+
+  elif [[ "$unameOsName" == "CYGWIN"* || "$unameOsName" == "MINGW"* || "$unameOsName" == "MSYS"* ]]; then
+    echo "Unsupported OS: $unameOsName"
+  else
+    echo "Unsupported OS: $unameOsName"
     return 1
   fi
 
-  "$intellijHome/bin/idea.sh" "../$dir" 1> /dev/null 2>&1 &
 }

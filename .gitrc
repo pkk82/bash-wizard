@@ -313,3 +313,6 @@ function git-set-global-committer() {
   git config --global user.name "$username"
   git config --global user.email "$email"
 }
+
+# git-set-global-pull-rebase - git config --global pull.rebase true'
+alias git-set-global-pull-rebase='git config --global pull.rebase true'

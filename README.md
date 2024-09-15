@@ -339,6 +339,9 @@ To automatically update the README.md file with the latest aliases and functions
     # git config --global user.name <username> && git config --global user.email <email>
     git-set-global-committer <username> <email>
 
+    # git config --global pull.rebase true'
+    git-set-global-pull-rebase
+
 ### INTELLIJ
     # launch IntelliJ IDEA with current directory as project
     ii

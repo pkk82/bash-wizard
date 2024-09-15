@@ -23,7 +23,7 @@ alias gpo='git push origin $(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 alias gpoall='git push origin --all'
 
 # gpo1 - git push origin HEAD~1:refs/heads/<current branch>
-alias gpo1='git push origin HEAD~1:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'\
+alias gpo1='git push origin HEAD~1:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
 # gpo2 - git push origin HEAD~2:refs/heads/<current branch>
 alias gpo2='git push origin HEAD~2:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
@@ -155,7 +155,7 @@ alias grv='git remote -v'
 
 # g-c - check if inside git repository, "1" inside, "0" outside
 function g-c() {
-  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     echo "1"
   else
     echo "0"
@@ -184,11 +184,11 @@ function gcm() {
 # gcmp - git checkout <main branch> && git pull
 function gcmp() {
   if [[ "$(g-c)" == "1" ]]; then
-      git checkout "$(g-mb)"
-      git pull
-    else
-      echo "Not inside a git repository."
-    fi
+    git checkout "$(g-mb)"
+    git pull
+  else
+    echo "Not inside a git repository."
+  fi
 }
 
 # grom - git rebase origin/<main-branch>
@@ -297,3 +297,19 @@ alias gdp='git config --global core.pager cat'
 
 # git-disable-pager - git config --global core.pager cat
 alias git-disable-pager='git config --global core.pager cat'
+
+# git-set-global-committer <username> <email> - git config --global user.name <username> && git config --global user.email <email>
+function git-set-global-committer() {
+  local username
+  local email
+  if [[ "$2" == "" ]]; then
+    echo "Use: git-set-global-committer <username> <email>"
+    return 1
+  fi
+
+  username="$1"
+  email="$2"
+
+  git config --global user.name "$username"
+  git config --global user.email "$email"
+}

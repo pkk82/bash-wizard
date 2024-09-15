@@ -336,6 +336,9 @@ To automatically update the README.md file with the latest aliases and functions
     # git config --global core.pager cat
     git-disable-pager
 
+    # git config --global user.name <username> && git config --global user.email <email>
+    git-set-global-committer <username> <email>
+
 ### INTELLIJ
     # launch IntelliJ IDEA with current directory as project
     ii

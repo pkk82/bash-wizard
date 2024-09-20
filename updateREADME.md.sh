@@ -1,4 +1,10 @@
-sed -i "/## Aliases & Functions/,\$d" README.md
+#!/bin/sh
+unameKernelName=$(uname -s)
+if [ "$unameKernelName" = "Darwin" ]; then
+  sed -i '' "/## Aliases & Functions/,\$d" README.md
+else
+  sed -i "/## Aliases & Functions/,\$d" README.md
+fi
 echo "## Aliases & Functions" >> README.md
 echo "" >> README.md
 for f in ./.*rc; do

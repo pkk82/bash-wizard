@@ -5,7 +5,8 @@ With BashWizard, you can simplify complex tasks, save time, and make your comman
 
 
 ## Getting Started
-Follow the steps below to set up AliasGenius in your shell environment:
+
+Follow the steps below to set up `bash-wizard` in your shell environment:
 
 1. Clone the repository to your local machine:
     ```bash 

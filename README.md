@@ -178,6 +178,12 @@ To automatically update the README.md file with the latest aliases and functions
     # git branch -v
     gbv
 
+    # git branch -r
+    gbr
+
+    # git branch -r -v
+    gbrv
+
     # git branch -D <branch>
     gbd <branch>
 

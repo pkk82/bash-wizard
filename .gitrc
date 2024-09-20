@@ -73,6 +73,12 @@ alias gb='git branch'
 # gbv - git branch -v
 alias gbv='git branch -v'
 
+# gbr - git branch -r
+alias gbr='git branch -r'
+
+# gbrv - git branch -r -v
+alias gbrv='git branch -r -v'
+
 # gbd <branch> - git branch -D <branch>
 alias gbd='git branch -D'
 

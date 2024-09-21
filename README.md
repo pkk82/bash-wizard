@@ -89,8 +89,20 @@ To automatically update the README.md file with the latest aliases and functions
     dcdudb
 
 ### DOCKER
+    # docker
+    d
+
+    # docker stop all running containers
+    dsa
+
+    # docker remove all containers
+    dra
+
     # docker exec -it <container> /bin/bash
     dbash <container>
+
+    # docker exec -it <container> /bin/sh
+    dsh <container>
 
 ### ENGLISH
     # download two mp3 files with British and American pronunciation for provided word

@@ -1,6 +1,12 @@
 # d - docker
 alias d='docker'
 
+# dsa - docker stop all running containers
+alias dsa='docker stop $(docker ps -q)'
+
+# dra - docker remove all containers
+alias dra='docker rm -f $(docker ps -a -q)'
+
 # dbash <container> - docker exec -it <container> /bin/bash
 function dbash() {
   local container

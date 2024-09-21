@@ -48,10 +48,7 @@ To automatically update the README.md file with the latest aliases and functions
     # d2 -w <file> -o /tmp/<file>.svg
     d2w
 
-### DOCKER
-    # docker exec -it <container> /bin/bash
-    dbash <container>
-
+### DOCKERCOMPOSE
     # docker-compose
     dc
 
@@ -90,6 +87,10 @@ To automatically update the README.md file with the latest aliases and functions
 
     # docker-compose down && docker-compose up -d --build
     dcdudb
+
+### DOCKER
+    # docker exec -it <container> /bin/bash
+    dbash <container>
 
 ### ENGLISH
     # download two mp3 files with British and American pronunciation for provided word

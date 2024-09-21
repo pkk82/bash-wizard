@@ -8,3 +8,14 @@ function dbash() {
   container="$1"
   docker exec -it "$container" /bin/bash
 }
+
+# dsh <container> - docker exec -it <container> /bin/sh
+function dsh() {
+  local container
+  if [[ "$1" == "" ]]; then
+    echo "Use: dsh <container>"
+    return 1
+  fi
+  container="$1"
+  docker exec -it "$container" /bin/sh
+}

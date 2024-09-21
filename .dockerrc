@@ -1,3 +1,6 @@
+# d - docker
+alias d='docker'
+
 # dbash <container> - docker exec -it <container> /bin/bash
 function dbash() {
   local container

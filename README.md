@@ -362,6 +362,10 @@ To automatically update the README.md file with the latest aliases and functions
     # git config --global pull.rebase true'
     git-set-global-pull-rebase
 
+### HTPASSWD
+    # encrypt a string using BCrypt hashing for use in Spring applications
+    htpasswd-hash-bcrypt-spring <string>
+
 ### INTELLIJ
     # launch IntelliJ IDEA with current directory as project
     ii

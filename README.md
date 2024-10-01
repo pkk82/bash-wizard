@@ -115,6 +115,9 @@ To automatically update the README.md file with the latest aliases and functions
     # display content of files in given directory with given name
     fca <dir> <file>
 
+    # find and remove directories in given directory
+    frm <dir>
+
 ### GIT
     # git pull
     gp

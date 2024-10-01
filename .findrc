@@ -44,7 +44,7 @@ function frmd() {
   dir="$1"
   dirName="$2"
 
-  find "$dir" -type d -name "$dirName" -exec rm -rf {} \; 2>/dev/null
+  find "$dir" -type d -name "$dirName" -exec rm -rfv {} \; 2>/dev/null
 }
 
 # frmf <dir> <file name> - find and remove files with given name in given directory
@@ -60,5 +60,5 @@ function frmf() {
   dir="$1"
   filename="$2"
 
-  find "$dir" -type f -name "$filename" -exec rm -rf {} \; 2>/dev/null
+  find "$dir" -type f -name "$filename" -exec rm -rfv {} \; 2>/dev/null
 }

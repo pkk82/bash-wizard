@@ -112,11 +112,14 @@ To automatically update the README.md file with the latest aliases and functions
     # find files in given directory containing a term
     fgr <dir> <term>
 
-    # display content of files in given directory with given name
-    fca <dir> <file>
+    # display content of files with given name in given directory
+    fca <dir> <filename>
 
-    # find and remove directories in given directory
-    frm <dir>
+    # find and remove directories with given name in given directory
+    frmd <dir> <dir name>
+
+    # find and remove files with given name in given directory
+    frmf <dir> <file name>
 
 ### GIT
     # git pull

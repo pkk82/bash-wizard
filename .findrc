@@ -15,13 +15,13 @@ function fgr() {
 }
 
 
-# fca <dir> <file> - display content of files in given directory with given name
+# fca <dir> <filename> - display content of files with given name in given directory
 function fca() {
   local dir
   local name
 
   if [[ "$2" == "" ]]; then
-    echo "Use: fgr <directory> <name>"
+    echo "Use: fgr <directory> <filename>"
     return 1
   fi
 
@@ -31,16 +31,34 @@ function fca() {
   find "$dir" -type f -name "$name" -print -exec cat {} \; 2>/dev/null
 }
 
-# frm <dir> - find and remove directories in given directory
-function frm() {
+# frmd <dir> <dir name> - find and remove directories with given name in given directory
+function frmd() {
   local dir
+  local dirName
 
-  if [[ "$1" == "" ]]; then
-    echo "Use: frm <directory>"
+  if [[ "$2" == "" ]]; then
+    echo "Use: frmd <directory> <directory name>"
     return 1
   fi
 
   dir="$1"
+  dirName="$2"
 
-  find "$dir" -type d -name "$dir" -exec rm -rf {} \; 2>/dev/null
+  find "$dir" -type d -name "$dirName" -exec rm -rf {} \; 2>/dev/null
+}
+
+# frmf <dir> <file name> - find and remove files with given name in given directory
+function frmf() {
+  local dir
+  local filename
+
+  if [[ "$2" == "" ]]; then
+    echo "Use: frmd <directory> <filename>"
+    return 1
+  fi
+
+  dir="$1"
+  filename="$2"
+
+  find "$dir" -type f -name "$filename" -exec rm -rf {} \; 2>/dev/null
 }

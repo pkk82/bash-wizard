@@ -380,6 +380,12 @@ To automatically update the README.md file with the latest aliases and functions
     # check if java class is main class
     jim <class file path>
 
+    # encrypt a string using BCrypt hashing for use in Spring applications
+    j-bcrypt-hash <string>
+
+    # encrypt a string using SHA256 hashing for use in Spring applications (PKCE in OAuth)
+    j-sha256-hash-url <string>
+
 ### KUBERNETES
     # kubectl
     k

@@ -18,3 +18,25 @@ function jim() {
     echo "There is a main method in $classFile."
   fi
 }
+
+# j-bcrypt-hash <string> - encrypt a string using BCrypt hashing for use in Spring applications
+function j-bcrypt-hash() {
+  local string
+  if [[ "$1" == "" ]]; then
+    echo "Use: j-bcrypt-hash <string>"
+    return 1
+  fi
+  string="$1"
+  htpasswd -bnBC 10 "" "$string" | tr -d ':\n' | sed "s/\$2y/\$2a/"
+}
+
+# j-sha256-hash-url <string> - encrypt a string using SHA256 hashing for use in Spring applications (PKCE in OAuth)
+function j-sha256-hash-url() {
+  local string
+  if [[ "$1" == "" ]]; then
+    echo "Use: j-sha256-hash-url <string>"
+    return 1
+  fi
+  string="$1"
+  echo -n "$string" | sha256sum | awk '{print $1}' | xxd -r -p | base64 | tr '+/' '-_' | tr -d '='
+}

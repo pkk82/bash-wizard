@@ -458,6 +458,9 @@ To automatically update the README.md file with the latest aliases and functions
     # mvn versions:display-plugin-updates
     mvdpu
 
+### OPENSSL
+ openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <subject> <alt-names>
+ openssl-display-certificate <certificate>
 ### PNPM
     # npm install --location=global pnpm
     pnpm-install-via-npm

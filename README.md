@@ -49,43 +49,43 @@ To automatically update the README.md file with the latest aliases and functions
     d2w
 
 ### DOCKERCOMPOSE
-    # docker-compose
+    # docker compose
     dc
 
-    # docker-compose up
+    # docker compose up
     dcu
 
-    # docker-compose start
+    # docker compose start
     dcstart
 
-    # docker-compose stop
+    # docker compose stop
     dcstop
 
-    # docker-compose up -d
+    # docker compose up -d
     dcud
 
-    # docker-compose up -d --build
+    # docker compose up -d --build
     dcudb
 
-    # docker-compose logs
+    # docker compose logs
     dcl
 
-    # docker-compose logs -f
+    # docker compose logs -f
     dclf
 
-    # docker-compose down
+    # docker compose down
     dcd
 
-    # docker-compose down -v
+    # docker compose down -v
     dcdv
 
-    # docker-compose restart
+    # docker compose restart
     dcr
 
-    # docker-compose down && docker-compose up -d
+    # docker compose down && docker compose up -d
     dcdud
 
-    # docker-compose down && docker-compose up -d --build
+    # docker compose down && docker compose up -d --build
     dcdudb
 
 ### DOCKER

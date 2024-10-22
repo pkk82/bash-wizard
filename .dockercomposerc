@@ -1,38 +1,38 @@
-# dc - docker-compose
-alias dc='docker-compose'
+# dc - docker compose
+alias dc='docker compose'
 
-# dcu - docker-compose up
-alias dcu='docker-compose up'
+# dcu - docker compose up
+alias dcu='docker compose up'
 
-# dcstart - docker-compose start
-alias dcstart='docker-compose start'
+# dcstart - docker compose start
+alias dcstart='docker compose start'
 
-# dcstop - docker-compose stop
-alias dcstop='docker-compose stop'
+# dcstop - docker compose stop
+alias dcstop='docker compose stop'
 
-# dcud - docker-compose up -d
-alias dcud='docker-compose up -d'
+# dcud - docker compose up -d
+alias dcud='docker compose up -d'
 
-# dcudb - docker-compose up -d --build
-alias dcudb='docker-compose up -d --build'
+# dcudb - docker compose up -d --build
+alias dcudb='docker compose up -d --build'
 
-# dcl - docker-compose logs
-alias dcl='docker-compose logs'
+# dcl - docker compose logs
+alias dcl='docker compose logs'
 
-# dclf - docker-compose logs -f
-alias dclf='docker-compose logs -f'
+# dclf - docker compose logs -f
+alias dclf='docker compose logs -f'
 
-# dcd - docker-compose down
-alias dcd='docker-compose down'
+# dcd - docker compose down
+alias dcd='docker compose down'
 
-# dcdv - docker-compose down -v
-alias dcdv='docker-compose down -v'
+# dcdv - docker compose down -v
+alias dcdv='docker compose down -v'
 
-# dcr - docker-compose restart
-alias dcr='docker-compose restart'
+# dcr - docker compose restart
+alias dcr='docker compose restart'
 
-# dcdud - docker-compose down && docker-compose up -d
-alias dcdud='docker-compose down && docker-compose up -d'
+# dcdud - docker compose down && docker compose up -d
+alias dcdud='docker compose down && docker compose up -d'
 
-# dcdudb - docker-compose down && docker-compose up -d --build
-alias dcdudb='docker-compose down && docker-compose up -d --build'
+# dcdudb - docker compose down && docker compose up -d --build
+alias dcdudb='docker compose down && docker compose up -d --build'

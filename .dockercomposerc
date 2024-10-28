@@ -16,12 +16,6 @@ alias dcud='docker compose up -d'
 # dcudb - docker compose up -d --build
 alias dcudb='docker compose up -d --build'
 
-# dcl - docker compose logs
-alias dcl='docker compose logs'
-
-# dclf - docker compose logs -f
-alias dclf='docker compose logs -f'
-
 # dcd - docker compose down
 alias dcd='docker compose down'
 
@@ -58,3 +52,17 @@ function dcsh() {
   service="$1"
   docker compose exec "$service" /bin/sh
 }
+
+# dcl <service> - docker compose logs <service>
+function dcl() {
+  service="$1"
+  docker compose logs "$service"
+}
+
+# dclf <service> - docker compose logs -f <service>
+function dclf() {
+  service="$1"
+  docker compose logs -f "$service"
+}
+
+

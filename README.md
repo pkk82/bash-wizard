@@ -67,12 +67,6 @@ To automatically update the README.md file with the latest aliases and functions
     # docker compose up -d --build
     dcudb
 
-    # docker compose logs
-    dcl
-
-    # docker compose logs -f
-    dclf
-
     # docker compose down
     dcd
 
@@ -93,6 +87,12 @@ To automatically update the README.md file with the latest aliases and functions
 
     # docker compose exec <service> /bin/sh
     dcsh <service>
+
+    # docker compose logs <service>
+    dcl <service>
+
+    # docker compose logs -f <service>
+    dclf <service>
 
 ### DOCKER
     # docker

@@ -137,6 +137,9 @@ To automatically update the README.md file with the latest aliases and functions
     # git status
     gs
 
+    # git tag --list <tag pattern>
+    gtl <tag pattern>
+
     # git tag <tag>
     gt <tag>
 

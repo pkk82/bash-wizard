@@ -7,6 +7,11 @@ alias gpall='git pull --all'
 # gs - git status
 alias gs='git status'
 
+# gtl <tag pattern> - git tag --list <tag pattern>
+function gtl() {
+  git tag --list "$1"
+}
+
 # gt <tag> - git tag <tag>
 alias gt='git tag'
 

@@ -88,6 +88,12 @@ To automatically update the README.md file with the latest aliases and functions
     # docker compose down && docker compose up -d --build
     dcdudb
 
+    # docker compose exec <service> /bin/bash
+    dcbash <service>
+
+    # docker compose exec <service> /bin/sh
+    dcsh <service>
+
 ### DOCKER
     # docker
     d

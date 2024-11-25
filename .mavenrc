@@ -155,3 +155,23 @@ function mejaa() {
 
 # mvdpu - mvn versions:display-plugin-updates
 alias mvdpu='mvn versions:display-plugin-updates'
+
+# mvn-latest-plugin-version <plugin> - display latest (non beta) version of maven plugin
+function mvn-latest-plugin-version() {
+    local plugin
+    if [[ "$1" == "" ]]; then
+      echo "Use: mvn-latest-plugin-version <plugin>"
+      return 1
+    fi
+    plugin="$1"
+    set -o pipefail
+    if ! curl -f -s "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/$plugin/maven-metadata.xml" | \
+      grep '<version>' | \
+      sed -E 's/[[:space:]]*<version>([^<]+)<\/version>[[:space:]]*/\1/g' | \
+      grep -v beta | \
+      tail -n 1
+    then
+      echo "Invalid plugin"
+    fi
+    set -o pipefail
+}

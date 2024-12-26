@@ -1,0 +1,10 @@
+# hg <term> - find history containing a term
+function hg() {
+  local term
+  if [[ "$1" == "" ]]; then
+    echo "Use: hg <term>"
+    return 1
+  fi
+  term="$1"
+  history  | grep "$term"
+}

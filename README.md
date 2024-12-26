@@ -377,6 +377,10 @@ To automatically update the README.md file with the latest aliases and functions
     # git config --global pull.rebase true'
     git-set-global-pull-rebase
 
+### HISTORY
+    # find history containing a term
+    hg <term>
+
 ### HTPASSWD
     # encrypt a string using BCrypt hashing for use in Spring applications
     htpasswd-hash-bcrypt-spring <string>

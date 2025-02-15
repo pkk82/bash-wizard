@@ -86,7 +86,7 @@ function english-generate-mp3-pronunciation-in-hearling() {
   response=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $token" -d "$usBody" -w "\n%{http_code}" "$url")
   httpCode=$(echo "$response" | tail -n1)
   success=0
-  if [ "$response" -eq 201 ]; then
+  if [ "$httpCode" -eq 201 ]; then
     echo "Generation successful! (US)"
   else
     echo "The request failed with HTTP status: $httpCode"

@@ -48,6 +48,10 @@ To automatically update the README.md file with the latest aliases and functions
     # d2 -w <file> -o /tmp/<file>.svg
     d2w
 
+### DIRENV
+    # direnv allow
+    da
+
 ### DOCKERCOMPOSE
     # docker compose
     dc

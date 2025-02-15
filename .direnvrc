@@ -1,0 +1,2 @@
+# da - direnv allow
+alias da='direnv allow'

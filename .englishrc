@@ -73,7 +73,7 @@ function english-generate-mp3-pronunciation-in-hearling() {
   ukBody="{\"text\":\"$sentence\",\"voice\":\"$randomUkVoice\"}"
   usBody="{\"text\":\"$sentence\",\"voice\":\"$randomUsVoice\"}"
 
-  response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $token" -d "$ukBody" -w "%{http_code}" "$url")
+  response=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $token" -d "$ukBody" -w "%{http_code}" "$url")
   success=0
   if [ "$response" -eq 201 ]; then
     echo "Generation successful! (UK)"
@@ -82,7 +82,7 @@ function english-generate-mp3-pronunciation-in-hearling() {
     success=1
   fi
 
-  response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $token" -d "$usBody" -w "%{http_code}" "$url")
+  response=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $token" -d "$usBody" -w "%{http_code}" "$url")
   success=0
   if [ "$response" -eq 201 ]; then
     echo "Generation successful! (US)"

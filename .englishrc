@@ -66,7 +66,7 @@ function english-generate-mp3-pronunciation-in-hearling() {
   local success
 
 
-  ukVoices=("en-UK-Wavenet-A" "en-UK-Wavenet-B" "en-UK-Wavenet-C" "en-UK-Wavenet-D" "en-UK-Wavenet-F" "en-UK-Wavenet-N" "en-UK-Wavenet-O")
+  ukVoices=("en-GB-Wavenet-A" "en-GB-Wavenet-B" "en-GB-Wavenet-C" "en-GB-Wavenet-D" "en-GB-Wavenet-F" "en-GB-Wavenet-N" "en-GB-Wavenet-O")
   randomUkVoice=${ukVoices[$RANDOM % ${#ukVoices[@]}]}
   usVoices=("en-US-Wavenet-A" "en-US-Wavenet-B" "en-US-Wavenet-C" "en-US-Wavenet-D" "en-US-Wavenet-E" "en-US-Wavenet-F" "en-US-Wavenet-G" "en-US-Wavenet-H" "en-US-Wavenet-I" "en-US-Wavenet-J")
   randomUsVoice=${usVoices[$RANDOM % ${#usVoices[@]}]}

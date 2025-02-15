@@ -80,6 +80,7 @@ function english-generate-mp3-pronunciation-in-hearling() {
     echo "Generation successful! (UK)"
   else
     echo "The request failed with HTTP status: $httpCode"
+    echo "$response"
     success=1
   fi
 
@@ -90,6 +91,7 @@ function english-generate-mp3-pronunciation-in-hearling() {
     echo "Generation successful! (US)"
   else
     echo "The request failed with HTTP status: $httpCode"
+    echo "$response"
     success=1
   fi
 

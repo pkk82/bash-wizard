@@ -118,6 +118,9 @@ To automatically update the README.md file with the latest aliases and functions
     # download two mp3 files with British and American pronunciation for provided word
     english-download-mp3-pronunciation-from-google
 
+    # download two mp3 files with British and American pronunciation for provided sentence
+    english-generate-mp3-pronunciation-in-hearling
+
 ### FIND
     # find files in given directory containing a term
     fgr <dir> <term>

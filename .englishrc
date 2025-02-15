@@ -42,3 +42,56 @@ function english-download-mp3-pronunciation-from-google() {
     return 1
   fi
 }
+
+
+# english-generate-mp3-pronunciation-in-hearling - download two mp3 files with British and American pronunciation for provided sentence
+function english-generate-mp3-pronunciation-in-hearling() {
+  if [[ "$2" == "" ]]; then
+    echo "Use: ${FUNCNAME[0]} <token> <english sentence>"
+    return 1
+  fi
+  local token
+  local sentence
+  local url
+  local ukVoices
+  local randomUkVoice
+  local usVoices
+  local randomUsVoice
+  token="$1"
+  sentence="$2"
+  url="https://api.hearling.com/clips"
+  local ukBody
+  local usBody
+  local response
+  local success
+
+
+  ukVoices=("en-UK-Wavenet-A" "en-UK-Wavenet-B" "en-UK-Wavenet-C" "en-UK-Wavenet-D" "en-UK-Wavenet-F" "en-UK-Wavenet-N" "en-UK-Wavenet-O")
+  randomUkVoice=${ukVoices[$RANDOM % ${#ukVoices[@]}]}
+  usVoices=("en-US-Wavenet-A" "en-US-Wavenet-B" "en-US-Wavenet-C" "en-US-Wavenet-D" "en-US-Wavenet-E" "en-US-Wavenet-F" "en-US-Wavenet-G" "en-US-Wavenet-H" "en-US-Wavenet-I" "en-US-Wavenet-J")
+  randomUsVoice=${usVoices[$RANDOM % ${#usVoices[@]}]}
+  ukBody="{\"text\":\"$sentence\",\"voice\":\"$randomUkVoice\"}"
+  usBody="{\"text\":\"$sentence\",\"voice\":\"$randomUsVoice\"}"
+
+  response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $token" -d "$ukBody" -w "%{http_code}" "$url")
+  success=0
+  if [ "$response" -eq 201 ]; then
+    echo "Generation successful! (UK)"
+  else
+    echo "The request failed with HTTP status: $response"
+    success=1
+  fi
+
+  response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $token" -d "$usBody" -w "%{http_code}" "$url")
+  success=0
+  if [ "$response" -eq 201 ]; then
+    echo "Generation successful! (US)"
+  else
+    echo "The request failed with HTTP status: $response"
+    success=1
+  fi
+
+  if [[ "$success" -eq 1 ]]; then
+    return 1
+  fi
+}

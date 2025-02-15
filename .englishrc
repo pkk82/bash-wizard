@@ -5,21 +5,23 @@ function english-download-mp3-pronunciation-from-google() {
     return 1
   fi
   local word
+  local ukUrl
+  local usUrl
   word="$1"
-  gbUrl="https://ssl.gstatic.com/dictionary/static/sounds/oxford/$word--_gb_1.mp3"
+  ukUrl="https://ssl.gstatic.com/dictionary/static/sounds/oxford/$word--_gb_1.mp3"
   usUrl="https://ssl.gstatic.com/dictionary/static/sounds/oxford/$word--_us_1.mp3"
 
-  response=$(curl -s -o "${word}_gb.mp3" -w "%{http_code}" "$gbUrl")
+  response=$(curl -s -o "${word}_uk.mp3" -w "%{http_code}" "$ukUrl")
   success=0
   if [ "$response" -eq 200 ]; then
-    echo "Download successful! Content saved to ${word}_gb.mp3"
+    echo "Download successful! Content saved to ${word}_uk.mp3"
   elif [ "$response" -eq 404 ]; then
-    echo "File $gbUrl not found"
-    rm -f "${word}_gb.mp3"
+    echo "File $ukUrl not found"
+    rm -f "${word}_uk.mp3"
     success=1
   else
     echo "The request failed with HTTP status: $response"
-    rm -f "${word}_gb.mp3"
+    rm -f "${word}_uk.mp3"
     success=1
   fi
 

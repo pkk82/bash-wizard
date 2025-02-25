@@ -67,9 +67,9 @@ function english-generate-mp3-pronunciation-in-hearling() {
 
 
   ukVoices=("en-GB-Wavenet-A" "en-GB-Wavenet-B" "en-GB-Wavenet-C" "en-GB-Wavenet-D" "en-GB-Wavenet-F" "en-GB-Wavenet-N" "en-GB-Wavenet-O")
-  randomUkVoice=${ukVoices[$RANDOM % ${#ukVoices[@]}]}
+  randomUkVoice=${ukVoices[$RANDOM % ${#ukVoices[@]} + 1]}
   usVoices=("en-US-Wavenet-A" "en-US-Wavenet-B" "en-US-Wavenet-C" "en-US-Wavenet-D" "en-US-Wavenet-E" "en-US-Wavenet-F" "en-US-Wavenet-G" "en-US-Wavenet-H" "en-US-Wavenet-I" "en-US-Wavenet-J")
-  randomUsVoice=${usVoices[$RANDOM % ${#usVoices[@]}]}
+  randomUsVoice=${usVoices[$RANDOM % ${#usVoices[@]} + 1]}
   ukBody="{\"text\":\"$sentence\",\"voice\":\"$randomUkVoice\"}"
   usBody="{\"text\":\"$sentence\",\"voice\":\"$randomUsVoice\"}"
 

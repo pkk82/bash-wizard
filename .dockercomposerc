@@ -28,8 +28,14 @@ alias dcr='docker compose restart'
 # dcdud - docker compose down && docker compose up -d
 alias dcdud='docker compose down && docker compose up -d'
 
+# dcdvud - docker compose down -v && docker compose up -d
+alias dcdvud='docker compose down -v && docker compose up -d'
+
 # dcdudb - docker compose down && docker compose up -d --build
 alias dcdudb='docker compose down && docker compose up -d --build'
+
+# dcdvudb - docker compose down -v && docker compose up -d --build
+alias dcdvudb='docker compose down -v && docker compose up -d --build'
 
 # dcbash <service> - docker compose exec <service> /bin/bash
 function dcbash() {

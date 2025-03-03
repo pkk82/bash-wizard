@@ -83,8 +83,14 @@ To automatically update the README.md file with the latest aliases and functions
     # docker compose down && docker compose up -d
     dcdud
 
+    # docker compose down -v && docker compose up -d
+    dcdvud
+
     # docker compose down && docker compose up -d --build
     dcdudb
+
+    # docker compose down -v && docker compose up -d --build
+    dcdvudb
 
     # docker compose exec <service> /bin/bash
     dcbash <service>

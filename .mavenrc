@@ -46,6 +46,12 @@ alias mist='mvn install -DskipTests -DskipUnitTests -DskipIntegrationTests'
 # mpst - mvn package -DskipTests
 alias mpst='mvn package -DskipTests -DskipUnitTests -DskipIntegrationTests'
 
+# msbr - mvn spring-boot:run'
+alias msbr='mvn spring-boot:run'
+
+# msbtr - mvn spring-boot:test-run'
+alias msbtr='mvn spring-boot:test-run'
+
 # mw <version> - mvn wrapper:wrapper -Dmaven=<version>
 function mw() {
   if [[ "$1" == "" ]]; then

@@ -469,6 +469,12 @@ To automatically update the README.md file with the latest aliases and functions
     # mvn package -DskipTests
     mpst
 
+    # mvn spring-boot:run'
+    msbr
+
+    # mvn spring-boot:test-run'
+    msbtr
+
     # mvn wrapper:wrapper -Dmaven=<version>
     mw <version>
 

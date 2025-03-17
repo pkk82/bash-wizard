@@ -159,6 +159,9 @@ To automatically update the README.md file with the latest aliases and functions
     # git tag --delete <tag>
     gtd <tag>
 
+    # git push --delete origin <tag>
+    gtdo <tag>
+
     # git fetch
     gf
 

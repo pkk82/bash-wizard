@@ -18,6 +18,9 @@ alias gt='git tag'
 # gtd <tag> - git tag --delete <tag>
 alias gtd='git tag --delete'
 
+# gtdo <tag> - git push --delete origin <tag>
+alias gtdo='git push --delete origin'
+
 # gf - git fetch
 alias gf='git fetch'
 

@@ -153,6 +153,18 @@ To automatically update the README.md file with the latest aliases and functions
     # git tag --list <tag pattern>
     gtl <tag pattern>
 
+    # git tag --list <tag pattern> | head -n 10
+    gtlh10 <tag pattern>
+
+    # git tag --list <tag pattern> | head -n 5
+    gtlh5 <tag pattern>
+
+    # git tag --list <tag pattern> | tail -n 10
+    gtlt10 <tag pattern>
+
+    # git tag --list <tag pattern> | tail -n 5
+    gtlt5 <tag pattern>
+
     # git tag <tag>
     gt <tag>
 

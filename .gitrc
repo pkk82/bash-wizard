@@ -12,6 +12,26 @@ function gtl() {
   git tag --list "$1"
 }
 
+# gtlh10 <tag pattern> - git tag --list <tag pattern> | head -n 10
+function gtlh10() {
+  git tag --list "$1" | head -n 10
+}
+
+# gtlh5 <tag pattern> - git tag --list <tag pattern> | head -n 5
+function gtlh5() {
+  git tag --list "$1" | head -n 5
+}
+
+# gtlt10 <tag pattern> - git tag --list <tag pattern> | tail -n 10
+function gtlt10() {
+  git tag --list "$1" | tail -n 10
+}
+
+# gtlt5 <tag pattern> - git tag --list <tag pattern> | tail -n 5
+function gtlt5() {
+  git tag --list "$1" | tail -n 5
+}
+
 # gt <tag> - git tag <tag>
 alias gt='git tag'
 

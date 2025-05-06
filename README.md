@@ -427,6 +427,13 @@ To automatically update the README.md file with the latest aliases and functions
     # encrypt a string using SHA256 hashing for use in Spring applications (PKCE in OAuth)
     j-sha256-hash-url <string>
 
+### KILL
+    # kill process listening on given port
+    kill-process-on-port
+
+    # terminate process listening on given port
+    terminate-process-on-port
+
 ### KUBERNETES
     # kubectl
     k

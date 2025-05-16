@@ -9,42 +9,28 @@ alias gs='git status'
 
 # gtl <tag pattern> - git tag --list <tag pattern>
 function gtl() {
-  git tag --list "$1"
-}
-
-# gtlh10 <tag pattern> - git tag --list <tag pattern> | head -n 10
-function gtlh10() {
   if [[ "$1" == "" ]]; then
-    git tag --list | head -n 10
+    git tag --list --sort=version:refname
   else
-    git tag --list "$1" | head -n 10
+    git tag --list "$1" --sort=version:refname
   fi
 }
 
-# gtlh5 <tag pattern> - git tag --list <tag pattern> | head -n 5
-function gtlh5() {
+# gtl-latest <number> - git tag --sort=version:refname | tail -n <number>
+function gtl-latest() {
   if [[ "$1" == "" ]]; then
-    git tag --list | head -n 5
+    git tag --list --sort=version:refname | tail -n 10
   else
-    git tag --list "$1" | head -n 5
+    git tag --list --sort=version:refname | tail -n "$1"
   fi
 }
 
-# gtlt10 <tag pattern> - git tag --list <tag pattern> | tail -n 10
-function gtlt10() {
+# gtl-oldest <number> - git tag --sort=version:refname | head -n <number>
+function gtl-oldest() {
   if [[ "$1" == "" ]]; then
-    git tag --list | tail -n 10
+    git tag --list --sort=-version:refname | head -n 10
   else
-    git tag --list "$1" | tail -n 10
-  fi
-}
-
-# gtlt5 <tag pattern> - git tag --list <tag pattern> | tail -n 5
-function gtlt5() {
-  if [[ "$1" == "" ]]; then
-    git tag --list | tail -n 5
-  else
-    git tag --list "$1" | tail -n 5
+    git tag --list --sort=-version:refname | head -n "$1"
   fi
 }
 

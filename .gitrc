@@ -25,12 +25,12 @@ function gtl-latest() {
   fi
 }
 
-# gtl-oldest <number> - git tag --sort=version:refname | head -n <number>
+# gtl-oldest <number> - git tag --sort=-version:refname | tail -n <number>
 function gtl-oldest() {
   if [[ "$1" == "" ]]; then
-    git tag --list --sort=-version:refname | head -n 10
+    git tag --list --sort=-version:refname | tail -n 10
   else
-    git tag --list --sort=-version:refname | head -n "$1"
+    git tag --list --sort=-version:refname | tail -n "$1"
   fi
 }
 

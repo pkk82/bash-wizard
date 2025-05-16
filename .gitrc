@@ -14,22 +14,38 @@ function gtl() {
 
 # gtlh10 <tag pattern> - git tag --list <tag pattern> | head -n 10
 function gtlh10() {
-  git tag --list "$1" | head -n 10
+  if [[ "$1" == "" ]]; then
+    git tag --list | head -n 10
+  else
+    git tag --list "$1" | head -n 10
+  fi
 }
 
 # gtlh5 <tag pattern> - git tag --list <tag pattern> | head -n 5
 function gtlh5() {
-  git tag --list "$1" | head -n 5
+  if [[ "$1" == "" ]]; then
+    git tag --list | head -n 5
+  else
+    git tag --list "$1" | head -n 5
+  fi
 }
 
 # gtlt10 <tag pattern> - git tag --list <tag pattern> | tail -n 10
 function gtlt10() {
-  git tag --list "$1" | tail -n 10
+  if [[ "$1" == "" ]]; then
+    git tag --list | tail -n 10
+  else
+    git tag --list "$1" | tail -n 10
+  fi
 }
 
 # gtlt5 <tag pattern> - git tag --list <tag pattern> | tail -n 5
 function gtlt5() {
-  git tag --list "$1" | tail -n 5
+  if [[ "$1" == "" ]]; then
+    git tag --list | tail -n 5
+  else
+    git tag --list "$1" | tail -n 5
+  fi
 }
 
 # gt <tag> - git tag <tag>

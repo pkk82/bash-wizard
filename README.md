@@ -303,6 +303,15 @@ To automatically update the README.md file with the latest aliases and functions
     # git rebase --abort
     gra
 
+    # git cherry-pick
+    gcp
+
+    # git cherry-pick --continue
+    gcpc
+
+    # git cherry-pick --abort
+    gcpa
+
     # git remote -v
     grv
 

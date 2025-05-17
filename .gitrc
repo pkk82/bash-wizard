@@ -186,6 +186,15 @@ alias grc='git rebase --continue'
 # gra - git rebase --abort
 alias gra='git rebase --abort'
 
+# gcp - git cherry-pick
+alias gcp='git cherry-pick'
+
+# gcpc - git cherry-pick --continue
+alias gcpc='git cherry-pick --continue'
+
+# gcpa - git cherry-pick --abort
+alias gcpa='git cherry-pick --abort'
+
 # grv - git remote -v
 alias grv='git remote -v'
 

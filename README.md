@@ -519,6 +519,7 @@ To automatically update the README.md file with the latest aliases and functions
     mvn-latest-plugin-version <plugin>
 
 ### OPENSSL
+ openssl-generate-certificate <name> <subject> <passphrase>
  openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <subject> <alt-names>
  openssl-display-certificate <certificate>
 ### PNPM

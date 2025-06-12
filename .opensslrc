@@ -1,3 +1,44 @@
+# openssl-generate-certificate <name> <subject> <passphrase>
+function openssl-generate-certificate() {
+  local name="$1"
+  local subject="$2"
+  local passphrase="$3"
+  local passphraseDir;
+  local passphraseFilePath
+  if [[ "$passphrase" == "" ]]; then
+    echo "Use: openssl-generate-certificate <name> <subject> <passphrase>"
+    echo "  <name> - name of the certificate used for filenames"
+    echo "  <subject> - subject of the certificate"
+    echo "    example: /C=<country>/ST=<state>/L=<location>/O=<organization>/OU=<organization unit>/CN=<common name>"
+    echo "  <passphrase> - passphrase for the private key"
+    return 1
+  fi
+
+  passphraseDir="$TMPDIR/$(date +%s)"
+  passphraseFilePath="$passphraseDir/$(date +%s)"
+  mkdir -m 700 "$passphraseDir"
+  echo "$passphrase" > "$passphraseFilePath"
+  chmod 600 "$passphraseFilePath"
+
+  echo "Generating private key to ${name}.key"
+  openssl genrsa \
+    -aes256 \
+    -passout file:"$passphraseFilePath" \
+    -out "./${name}.key" 4096
+
+  echo "Generating certificate to ${name}.crt"
+  openssl req \
+    -new \
+    -sha256 \
+    -x509 \
+    -days 365 \
+    -key "./${name}.key" \
+    -subj "$subject" \
+    -out "./${name}.crt" \
+    -passin file:"$passphraseFilePath"
+  rm -rf "$passphraseDir"
+}
+
 # openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <subject> <alt-names>
 function openssl-generate-server-certificate-signed-by-ca() {
   local ca_crt="$1"

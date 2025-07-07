@@ -535,6 +535,10 @@ To automatically update the README.md file with the latest aliases and functions
     # pnpm add <package>
     pa
 
+### RENAME
+    # rename files in a current directory based on a regex pattern and replacement
+    rename-files
+
 ### SVM
     # download soft-ver-man
     svmd

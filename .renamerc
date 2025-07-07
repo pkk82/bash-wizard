@@ -1,0 +1,22 @@
+# rename-files - rename files in a current directory based on a regex pattern and replacement
+function rename-files() {
+  local pattern
+  local replacement
+  local doit
+
+  if [[ "$2" == "" ]]; then
+    echo "Usage: $0 <regex_pattern> <replacement> [--doit]"
+    return 1
+  fi
+
+  pattern="$1"
+  replacement="$2"
+  doit="$3"
+
+  if [[ "$doit" == "--doit" ]]; then
+    rename "s/$pattern/$replacement/" -- *
+  else
+    rename -n "s/$pattern/$replacement/" -- *
+    echo "Dry run only. Use --doit as the 4th argument to actually rename files."
+  fi
+}

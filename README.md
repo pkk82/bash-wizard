@@ -127,6 +127,9 @@ To automatically update the README.md file with the latest aliases and functions
     # download two mp3 files with British and American pronunciation for provided sentence
     english-generate-mp3-pronunciation-in-hearling
 
+    # rename mp3 files downloaded from hearling.com to have _uk and _us suffixes
+    rename-mp3-files-downloaded-from-hearling
+
 ### FIND
     # find files in given directory containing a term
     fgr <dir> <term>
@@ -538,6 +541,9 @@ To automatically update the README.md file with the latest aliases and functions
 ### RENAME
     # rename files in a current directory based on a regex pattern and replacement
     rename-files
+
+    # rename files in a current directory based on a regex pattern and replacement
+    rename-files-using-sed
 
 ### SVM
     # download soft-ver-man

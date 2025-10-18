@@ -105,3 +105,36 @@ function rename-mp3-files-downloaded-from-hearling() {
   rename-files-using-sed "\\(.*\\) (1).mp3" "\\1_us.mp3" --doit
   rename-files-using-sed "^\\([^_]*\\).mp3$" "\\1_uk.mp3" --doit
 }
+
+# print-js-script-to-download-mp3-files-from-hearling - print JavaScript script to download mp3 files from hearling.com
+function print-js-script-to-download-mp3-files-from-hearling() {
+  cat << 'EOF'
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+for (const clipEl of document.querySelectorAll('.list__items .clip')) {
+  // Click the icon
+  const icon = clipEl.querySelector('.clip__icon');
+  if (icon) {
+
+    icon.click();
+
+    // Get the main text (first .text, excluding language/voice)
+    const text = Array.from(clipEl.querySelectorAll('.text'))
+      .filter(t => !t.classList.contains('clip__language') && !t.classList.contains('clip__voice'))[0]?.textContent.trim();
+
+    // Get the language
+    const language = clipEl.querySelector('.clip__language')?.textContent.trim();
+
+    // Grab the link
+    const link = document.querySelector("a[class='icon']");
+
+    link.click();
+    await sleep(2000);
+    console.log('Link for ', text, '/', language, ' clicked');
+    icon.click();
+  }
+}
+EOF
+}

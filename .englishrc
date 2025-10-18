@@ -100,14 +100,14 @@ function english-generate-mp3-pronunciation-in-hearling() {
   fi
 }
 
-# rename-mp3-files-downloaded-from-hearling - rename mp3 files downloaded from hearling.com to have _uk and _us suffixes
-function rename-mp3-files-downloaded-from-hearling() {
+# english-rename-mp3-files-downloaded-from-hearling - rename mp3 files downloaded from hearling.com to have _uk and _us suffixes
+function english-rename-mp3-files-downloaded-from-hearling() {
   rename-files-using-sed "\\(.*\\) (1).mp3" "\\1_us.mp3" --doit
   rename-files-using-sed "^\\([^_]*\\).mp3$" "\\1_uk.mp3" --doit
 }
 
-# print-js-script-to-download-mp3-files-from-hearling - print JavaScript script to download mp3 files from hearling.com
-function print-js-script-to-download-mp3-files-from-hearling() {
+# english-print-js-script-to-download-mp3-files-from-hearling - print JavaScript script to download mp3 files from hearling.com
+function english-print-js-script-to-download-mp3-files-from-hearling() {
   cat << 'EOF'
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

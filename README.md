@@ -128,10 +128,10 @@ To automatically update the README.md file with the latest aliases and functions
     english-generate-mp3-pronunciation-in-hearling
 
     # rename mp3 files downloaded from hearling.com to have _uk and _us suffixes
-    rename-mp3-files-downloaded-from-hearling
+    english-rename-mp3-files-downloaded-from-hearling
 
     # print JavaScript script to download mp3 files from hearling.com
-    print-js-script-to-download-mp3-files-from-hearling
+    english-print-js-script-to-download-mp3-files-from-hearling
 
 ### FIND
     # find files in given directory containing a term

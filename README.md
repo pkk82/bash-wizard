@@ -541,6 +541,19 @@ To automatically update the README.md file with the latest aliases and functions
     # pnpm add <package>
     pa
 
+### PYTHON
+    # create virtual environment
+    pyec
+
+    # activate virtual environment
+    pyea
+
+    # create virtual environment and activate it
+    pyeca
+
+    # pip install from requirements.txt
+    pii
+
 ### RENAME
     # rename files in a current directory based on a regex pattern and replacement
     rename-files

@@ -1,0 +1,11 @@
+# pyec - create virtual environment
+alias pyec='python3 -m venv .venv'
+
+# pyea - activate virtual environment
+alias pyea='source .venv/bin/activate'
+
+# pyeca - create virtual environment and activate it
+alis pyeca='python3 -m venv .venv && source .venv/bin/activate'
+
+# pii - pip install from requirements.txt
+alias pii='pip install -r requirements.txt'

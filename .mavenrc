@@ -46,24 +46,24 @@ alias mist='mvn install -DskipTests -DskipUnitTests -DskipIntegrationTests'
 # mpst - mvn package -DskipTests
 alias mpst='mvn package -DskipTests -DskipUnitTests -DskipIntegrationTests'
 
-
-# msbr <profile> - mvn spring-boot:run, optionally with profile
+# msbr <profile> [more maven args...] - mvn spring-boot:run, optionally with profile
 function msbr() {
-  if [[ "$1" == "" ]]; then
-    mvn spring-boot:run
+  if [[ -z "$1" ]]; then
+    mvn spring-boot:run "$@"
   else
-    mvn spring-boot:run -Dspring-boot.run.profiles="$1"
+    mvn spring-boot:run -Dspring-boot.run.profiles="$1" "${@:2}"
   fi
 }
 
-# msbtr <profile> - mvn spring-boot:test-run, optionally with profile
+# msbtr <profile> [more maven args...] - mvn spring-boot:test-run, optionally with profile
 function msbtr() {
-  if [[ "$1" == "" ]]; then
-    mvn spring-boot:test-run
+  if [[ -z "$1" ]]; then
+    mvn spring-boot:test-run "$@"
   else
-    mvn spring-boot:test-run -Dspring-boot.run.profiles="$1"
+    mvn spring-boot:test-run -Dspring-boot.run.profiles="$1" "${@:2}"
   fi
 }
+
 
 # mw <version> - mvn wrapper:wrapper -Dmaven=<version>
 function mw() {

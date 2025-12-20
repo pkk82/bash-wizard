@@ -500,11 +500,11 @@ To automatically update the README.md file with the latest aliases and functions
     # mvn package -DskipTests
     mpst
 
-    # mvn spring-boot:run'
-    msbr
+    # mvn spring-boot:run, optionally with profile
+    msbr <profile> [more maven args...]
 
-    # mvn spring-boot:test-run'
-    msbtr
+    # mvn spring-boot:test-run, optionally with profile
+    msbtr <profile> [more maven args...]
 
     # mvn wrapper:wrapper -Dmaven=<version>
     mw <version>

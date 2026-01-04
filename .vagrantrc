@@ -1,0 +1,8 @@
+# vdf - vagrant destroy -f
+alias vdf='vagrant destroy -f'
+
+# vup - vagrant up --provision
+alias vup='vagrant up --provision'
+
+# vssh - vagrant ssh
+alias vssh='vagrant ssh'

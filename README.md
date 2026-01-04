@@ -565,3 +565,13 @@ To automatically update the README.md file with the latest aliases and functions
     # download soft-ver-man
     svmd
 
+### VAGRANT
+    # vagrant destroy -f
+    vdf
+
+    # vagrant up --provision
+    vup
+
+    # vagrant ssh
+    vssh
+

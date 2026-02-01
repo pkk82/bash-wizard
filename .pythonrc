@@ -9,8 +9,13 @@ alias pyeca='python3 -m venv .venv && source .venv/bin/activate'
 
 # pii - pip install from requirements.txt
 function pii() {
-  if [ ! -f requirements.txt ]; then
-    touch requirements.txt
+  pyea
+  if [[ $# -eq 0 ]]; then
+    pip install -r requirements.txt
+  else
+    if [[ ! -f requirements.txt ]]; then
+      touch requirements.txt
+    fi
+    pip install "$@" && echo "$@" | tr ' ' '\n' >> requirements.txt
   fi
-  pip install -r requirements.txt
 }

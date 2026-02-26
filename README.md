@@ -146,6 +146,10 @@ To automatically update the README.md file with the latest aliases and functions
     # find and remove files with given name in given directory
     frmf <dir> <file name>
 
+### GITBATCH
+    # git pull for all repositories in the given directory if on main/master; otherwise git fetch
+    gbp [dir]
+
 ### GIT
     # git pull
     gp

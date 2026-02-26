@@ -1,0 +1,35 @@
+# gbp [dir] - git pull for all repositories in the given directory if on main/master; otherwise git fetch
+function gbp() {
+  local base_dir
+  local dir
+  local branch
+
+  if [[ -z "$1" ]]; then
+    base_dir="."
+  else
+    base_dir="$1"
+  fi
+
+  if [[ ! -d "$base_dir" ]]; then
+    echo "[git-batch] Provided path is not a directory: $base_dir" >&2
+    return 1
+  fi
+
+  for dir in "$base_dir"/*; do
+    [[ -e "$dir" ]] || continue
+    [[ -d "$dir" ]] || continue
+
+    # Check if directory is a git repository (handles worktrees as well)
+    if git -C "$dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      repo_name=$(basename "$dir")
+      branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null)
+      if [[ "$branch" == "main" || "$branch" == "master" ]]; then
+        echo "[git-batch] => $repo_name on $branch: git pull --ff-only"
+        git -C "$dir" pull --ff-only
+      else
+        echo "[git-batch] => $repo_name on $branch: git fetch --all --prune"
+        git -C "$dir" fetch --all --prune
+      fi
+    fi
+  done
+}

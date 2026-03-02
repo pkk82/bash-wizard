@@ -33,3 +33,40 @@ function gbp() {
     fi
   done
 }
+
+# gbcmp [dir] - git checkout <main branch> && git pull for all repositories in the given directory
+function gbcmp() {
+  local base_dir
+  local dir
+  local repo_name
+  local main_branch
+
+  if [[ -z "$1" ]]; then
+    base_dir="."
+  else
+    base_dir="$1"
+  fi
+
+  if [[ ! -d "$base_dir" ]]; then
+    echo "[git-batch] Provided path is not a directory: $base_dir" >&2
+    return 1
+  fi
+
+  for dir in "$base_dir"/*; do
+    [[ -e "$dir" ]] || continue
+    [[ -d "$dir" ]] || continue
+
+    if git -C "$dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      repo_name=$(basename "$dir")
+      main_branch=$(git -C "$dir" remote show origin | sed -n '/HEAD branch/s/.*: //p')
+
+      if [[ -z "$main_branch" ]]; then
+        echo "[git-batch] => $repo_name: Could not determine main branch. Skipping."
+        continue
+      fi
+
+      echo "[git-batch] => $repo_name: Switching to $main_branch and pulling"
+      git -C "$dir" checkout "$main_branch" && git -C "$dir" pull
+    fi
+  done
+}

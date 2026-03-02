@@ -150,6 +150,9 @@ To automatically update the README.md file with the latest aliases and functions
     # git pull for all repositories in the given directory if on main/master; otherwise git fetch
     gbp [dir]
 
+    # git checkout <main branch> && git pull for all repositories in the given directory
+    gbcmp [dir]
+
 ### GIT
     # git pull
     gp

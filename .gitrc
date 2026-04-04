@@ -67,6 +67,18 @@ alias gpo4='git push origin HEAD~4:refs/heads/$(git rev-parse --abbrev-ref HEAD 
 # gpo5 - git push origin HEAD~5:refs/heads/<current branch>
 alias gpo5='git push origin HEAD~5:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
 
+# gpo6 - git push origin HEAD~6:refs/heads/<current branch>
+alias gpo6='git push origin HEAD~6:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+
+# gpo7 - git push origin HEAD~7:refs/heads/<current branch>
+alias gpo7='git push origin HEAD~7:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+
+# gpo8 - git push origin HEAD~8:refs/heads/<current branch>
+alias gpo8='git push origin HEAD~8:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+
+# gpo9 - git push origin HEAD~9:refs/heads/<current branch>
+alias gpo9='git push origin HEAD~9:refs/heads/$(git rev-parse --abbrev-ref HEAD 2>/dev/null)'
+
 # gpot - git push origin --tags
 alias gpot='git push origin --tags'
 

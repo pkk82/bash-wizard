@@ -471,6 +471,9 @@ To automatically update the README.md file with the latest aliases and functions
     macos-replace-right-command-and-right-option
 
 ### MAVEN
+    # maven wrapper that auto-detects local .m2/settings.xml in directory hierarchy (from $PWD up to $HOME)
+    mvn
+
     # mvn clean install
     mci
 

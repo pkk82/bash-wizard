@@ -1,3 +1,28 @@
+# __bw_find_mvn_settings - find closest .m2/settings.xml between $PWD and $HOME (excludes $HOME itself as it's the default)
+function __bw_find_mvn_settings() {
+  local dir="$PWD"
+  while [[ "$dir" != "$HOME" && "$dir" != "/" ]]; do
+    if [[ -f "$dir/.m2/settings.xml" ]]; then
+      echo "$dir/.m2/settings.xml"
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+  done
+  return 1
+}
+
+# mvn - maven wrapper that auto-detects local .m2/settings.xml in directory hierarchy
+function mvn() {
+  local settings
+  settings=$(__bw_find_mvn_settings)
+  if [[ -n "$settings" ]]; then
+    echo "Using settings: $settings"
+    command mvn -s "$settings" "$@"
+  else
+    command mvn "$@"
+  fi
+}
+
 # mci - mvn clean install
 alias mci='mvn clean install'
 

@@ -52,17 +52,15 @@ function addFileLoadingByRcFiles() {
 }
 
 function sedInFile() {
-  local sedInplace
-  local file
   local replacement
+  local file
   replacement="$1"
   file="$2"
   if [[ $(uname) == "Darwin" ]]; then
-    sedInplace="-i ''"
+    sed -i '' "$replacement" "$file"
   else
-    sedInplace="-i"
+    sed -i "$replacement" "$file"
   fi
-  sed $sedInplace "$replacement" "$file"
 }
 
 function addFileLoadingByRcFile() {

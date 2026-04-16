@@ -475,7 +475,7 @@ To automatically update the README.md file with the latest aliases and functions
     mvn-find-settings
 
     # maven wrapper that auto-detects local .m2/settings.xml in directory hierarchy
-    mvn
+    mvn_
 
     # mvn clean install
     mci

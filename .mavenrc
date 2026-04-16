@@ -11,8 +11,8 @@ function mvn-find-settings() {
   return 1
 }
 
-# mvn - maven wrapper that auto-detects local .m2/settings.xml in directory hierarchy
-function mvn() {
+# mvn_ - maven wrapper that auto-detects local .m2/settings.xml in directory hierarchy
+function mvn_() {
   local settings
   settings=$(mvn-find-settings)
   if [[ -n "$settings" ]]; then
@@ -24,68 +24,68 @@ function mvn() {
 }
 
 # mci - mvn clean install
-alias mci='mvn clean install'
+alias mci='mvn_ clean install'
 
 # mcv - mvn clean verify
-alias mcv='mvn clean verify'
+alias mcv='mvn_ clean verify'
 
 # mcp - mvn clean package
-alias mcp='mvn clean package'
+alias mcp='mvn_ clean package'
 
 # mcc - mvn clean compile
-alias mcc='mvn clean compile'
+alias mcc='mvn_ clean compile'
 
 # mctc - mvn clean test-compile
-alias mctc='mvn clean test-compile'
+alias mctc='mvn_ clean test-compile'
 
 # mct - mvn clean test
-alias mct='mvn clean test'
+alias mct='mvn_ clean test'
 
 # mcist - mvn clean install -DskipTests
-alias mcist='mvn clean install -DskipTests -DskipUnitTests -DskipIntegrationTests'
+alias mcist='mvn_ clean install -DskipTests -DskipUnitTests -DskipIntegrationTests'
 
 # mcpst - mvn clean package -DskipTests
-alias mcpst='mvn clean package -DskipTests -DskipUnitTests -DskipIntegrationTests'
+alias mcpst='mvn_ clean package -DskipTests -DskipUnitTests -DskipIntegrationTests'
 
 # mi - mvn install
-alias mi='mvn install'
+alias mi='mvn_ install'
 
 # mve - mvn verify
-alias mve='mvn verify'
+alias mve='mvn_ verify'
 
 # mp - mvn package
-alias mp='mvn package'
+alias mp='mvn_ package'
 
 # mc - mvn compile
-alias mc='mvn compile'
+alias mc='mvn_ compile'
 
 # mtc - mvn test-compile
-alias mtc='mvn test-compile'
+alias mtc='mvn_ test-compile'
 
 # mt - mvn test
-alias mt='mvn test'
+alias mt='mvn_ test'
 
 # mist - mvn install -DskipTests
-alias mist='mvn install -DskipTests -DskipUnitTests -DskipIntegrationTests'
+alias mist='mvn_ install -DskipTests -DskipUnitTests -DskipIntegrationTests'
 
 # mpst - mvn package -DskipTests
-alias mpst='mvn package -DskipTests -DskipUnitTests -DskipIntegrationTests'
+alias mpst='mvn_ package -DskipTests -DskipUnitTests -DskipIntegrationTests'
 
 # msbr <profile> [more maven args...] - mvn spring-boot:run, optionally with profile
 function msbr() {
   if [[ -z "$1" ]]; then
-    mvn spring-boot:run "$@"
+    mvn_ spring-boot:run "$@"
   else
-    mvn spring-boot:run -Dspring-boot.run.profiles="$1" "${@:2}"
+    mvn_ spring-boot:run -Dspring-boot.run.profiles="$1" "${@:2}"
   fi
 }
 
 # msbtr <profile> [more maven args...] - mvn spring-boot:test-run, optionally with profile
 function msbtr() {
   if [[ -z "$1" ]]; then
-    mvn spring-boot:test-run "$@"
+    mvn_ spring-boot:test-run "$@"
   else
-    mvn spring-boot:test-run -Dspring-boot.run.profiles="$1" "${@:2}"
+    mvn_ spring-boot:test-run -Dspring-boot.run.profiles="$1" "${@:2}"
   fi
 }
 
@@ -93,9 +93,9 @@ function msbtr() {
 # mw <version> - mvn wrapper:wrapper -Dmaven=<version>
 function mw() {
   if [[ "$1" == "" ]]; then
-    mvn wrapper:wrapper
+    mvn_ wrapper:wrapper
   else
-    mvn wrapper:wrapper -Dmaven="$1"
+    mvn_ wrapper:wrapper -Dmaven="$1"
   fi
 }
 
@@ -134,7 +134,7 @@ function mej() {
     echo ""
     echo "Launching $className"
     echo ""
-    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$pathToPom/pom.xml"
+    mvn_ --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$pathToPom/pom.xml"
     break
   done
 }
@@ -168,7 +168,7 @@ function meja() {
     echo ""
     echo "Launching $className"
     echo ""
-    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$pathToPom/pom.xml"
+    mvn_ --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$pathToPom/pom.xml"
   done
 }
 
@@ -193,12 +193,12 @@ function mejaa() {
     echo ""
     echo "Launching $className"
     echo ""
-    mvn --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$pathToPom/pom.xml"
+    mvn_ --quiet exec:java -Dexec.mainClass="$className" -Dexec.args="${*:2}" -f "$pathToPom/pom.xml"
   done
 }
 
 # mvdpu - mvn versions:display-plugin-updates
-alias mvdpu='mvn versions:display-plugin-updates'
+alias mvdpu='mvn_ versions:display-plugin-updates'
 
 # mvn-latest-plugin-version <plugin> - display latest (non beta) version of maven plugin
 function mvn-latest-plugin-version() {

@@ -80,7 +80,6 @@ function addFileLoadingByRcFile() {
         echo -e "\n### bash-wizard"
         echo -e "[[ -s \"\$HOME$loadedFileName\" ]] && . \"\$HOME$loadedFileName\"\n"
       } >>"$rcFile"
-      sedInFile '/^$/N;/^\n$/D' "$rcFile"
     fi
   fi
 }

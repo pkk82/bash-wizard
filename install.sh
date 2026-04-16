@@ -77,7 +77,7 @@ function addFileLoadingByRcFile() {
     else
       printUpdateInfo "modifying $rcFile to load $loadedFileName"
       {
-        echo -e "\n### bash-wizard"
+        echo -e "\n# bash-wizard"
         echo -e "[[ -s \"\$HOME$loadedFileName\" ]] && . \"\$HOME$loadedFileName\"\n"
       } >>"$rcFile"
     fi

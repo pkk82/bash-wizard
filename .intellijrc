@@ -29,7 +29,16 @@ function ii {
 
   elif [[ "$unameOsName" == "Darwin" ]]; then
 
-    "/Applications/IntelliJ IDEA.app/Contents/MacOS/idea" "../$dir" 1>/dev/null 2>&1 &
+    local ideaBin
+    if [[ -d "/Applications/IntelliJ IDEA.app" ]]; then
+      ideaBin="/Applications/IntelliJ IDEA.app/Contents/MacOS/idea"
+    elif [[ -d "$HOME/Applications/IntelliJ IDEA.app" ]]; then
+      ideaBin="$HOME/Applications/IntelliJ IDEA.app/Contents/MacOS/idea"
+    else
+      echo "IntelliJ IDEA.app not found in /Applications or ~/Applications"
+      return 1
+    fi
+    "$ideaBin" "../$dir" 1>/dev/null 2>&1 &
 
   elif [[ "$unameOsName" == "CYGWIN"* || "$unameOsName" == "MINGW"* || "$unameOsName" == "MSYS"* ]]; then
     echo "Unsupported OS: $unameOsName"

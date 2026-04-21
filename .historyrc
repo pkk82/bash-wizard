@@ -6,5 +6,5 @@ function hg() {
     return 1
   fi
   term="$1"
-  history  | grep "$term"
+  history 1 | grep "$term"
 }

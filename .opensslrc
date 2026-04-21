@@ -39,17 +39,19 @@ function openssl-generate-certificate() {
   rm -rf "$passphraseDir"
 }
 
-# openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <subject> <alt-names>
+# openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <name> <subject> <alt-names>
 function openssl-generate-server-certificate-signed-by-ca() {
   local ca_crt="$1"
   local ca_key="$2"
-  local subject="$3"
-  local alt_names="$4"
+  local name="$3"
+  local subject="$4"
+  local alt_names="$5"
 
   if [[ "$subject" == "" ]]; then
-    echo "Use: openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <subject> <alt-names>"
+    echo "Use: openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <name> <subject> <alt-names>"
     echo "  <ca-cert> - path to CA certificate"
     echo "  <ca-key> - path to CA key"
+    echo "  <name> - name used for output filenames (e.g. server -> server.key, server.csr, server.crt)"
     echo "  <subject> - subject of the certificate"
     echo "    example: /C=<country>/ST=<state>/L=<location>/O=<organization>/OU=<organization unit>/CN=<common name>"
     echo " <alt-names> - alternative names for the certificate "
@@ -57,35 +59,36 @@ function openssl-generate-server-certificate-signed-by-ca() {
     return 1
   fi
 
-  echo "Generating server key to ./server.key file"
-  openssl genrsa -out server.key 4096
+  echo "Generating server key to ./${name}.key file"
+  openssl genrsa -out "${name}.key" 4096
 
-  echo "Generating certificate signing request to ./server.csr file"
+  echo "Generating certificate signing request to ./${name}.csr file"
   openssl req \
     -subj "$subject" \
     -sha256 \
     -new \
-    -key server.key \
-    -out server.csr
+    -key "${name}.key" \
+    -out "${name}.csr"
 
-  echo "Generating extfile.cnf file"
-  echo extendedKeyUsage = serverAuth > extfile.cnf
+  echo "Generating ./${name}.cnf file"
+  echo extendedKeyUsage = serverAuth > "${name}.cnf"
   if [[ "$alt_names" != "" ]]; then
-    echo subjectAltName = "$alt_names" >> extfile.cnf
+    echo subjectAltName = "$alt_names" >> "${name}.cnf"
   fi
 
-  echo "Generating certificate to ./server.crt file"
+  echo "Generating certificate to ./${name}.crt file"
   openssl x509 \
     -req \
     -days 365 \
     -sha256 \
-    -in server.csr \
+    -in "${name}.csr" \
     -CA "$ca_crt" \
     -CAkey "$ca_key" \
     -CAcreateserial \
-    -extfile extfile.cnf \
-    -out server.crt
+    -extfile "${name}.cnf" \
+    -out "${name}.crt"
 
+  rm -f "${name}.csr" "${name}.cnf"
 }
 
 # openssl-display-certificate <certificate>

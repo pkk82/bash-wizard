@@ -295,6 +295,33 @@ To automatically update the README.md file with the latest aliases and functions
     # git log --oneline -n 9
     gl9
 
+    # git log -n 1 with author and email
+    gla1
+
+    # git log -n 2 with author and email
+    gla2
+
+    # git log -n 3 with author and email
+    gla3
+
+    # git log -n 4 with author and email
+    gla4
+
+    # git log -n 5 with author and email
+    gla5
+
+    # git log -n 6 with author and email
+    gla6
+
+    # git log -n 7 with author and email
+    gla7
+
+    # git log -n 8 with author and email
+    gla8
+
+    # git log -n 9 with author and email
+    gla9
+
     # git rebase -i HEAD~1
     gri1
 
@@ -551,7 +578,7 @@ To automatically update the README.md file with the latest aliases and functions
 
 ### OPENSSL
  openssl-generate-certificate <name> <subject> <passphrase>
- openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <subject> <alt-names>
+ openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <name> <subject> <alt-names>
  openssl-display-certificate <certificate>
 ### PNPM
     # npm install --location=global pnpm

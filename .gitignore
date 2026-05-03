@@ -38,3 +38,6 @@ venv/
 # symlinks
 .--external
 .--external-dropbox
+
+# claude
+.claude/settings.local.json

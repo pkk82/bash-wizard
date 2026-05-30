@@ -497,6 +497,9 @@ To automatically update the README.md file with the latest aliases and functions
     # replaces the right command key with right option key
     macos-replace-right-command-and-right-option
 
+    # shows hidden files in finder
+    macos-show-hidden-files-in-finder
+
 ### MAVEN
     # find closest .m2/settings.xml between $PWD and $HOME (excludes $HOME itself as it's the default)
     mvn-find-settings

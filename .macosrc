@@ -5,3 +5,9 @@ function macos-replace-right-command-and-right-option {
     {"HIDKeyboardModifierMappingSrc":0x7000000e6, "HIDKeyboardModifierMappingDst":0x7000000e7}
   ]}'
 }
+
+# macos-show-hidden-files-in-finder - shows hidden files in finder
+function macos-show-hidden-files-in-finder {
+  defaults write com.apple.finder AppleShowAllFiles -bool true
+  killall Finder
+}

@@ -493,6 +493,9 @@ To automatically update the README.md file with the latest aliases and functions
     # kind get clusters
     kigc
 
+    # kind get nodes
+    kign
+
     # kind delete cluster --name <cluster>
     kidc <cluster>
 

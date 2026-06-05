@@ -1,6 +1,9 @@
 # kigc - kind get clusters
 alias kigc='kind get clusters'
 
+# kign - kind get nodes
+alias kign='kind get nodes'
+
 # kidc <cluster> - kind delete cluster --name <cluster>
 function kidc() {
   local cluster

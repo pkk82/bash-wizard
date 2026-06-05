@@ -1,0 +1,35 @@
+# kigc - kind get clusters
+alias kigc='kind get clusters'
+
+# kidc <cluster> - kind delete cluster --name <cluster>
+function kidc() {
+  local cluster
+  if [[ "$1" == "" ]]; then
+    echo "Use: kidc <cluster>"
+    return 1
+  fi
+  cluster="$1"
+  kind delete cluster --name "$cluster"
+}
+
+# kidnc <cluster> - docker stop $(kind get nodes --name <cluster>)
+function kidnc() {
+  local cluster
+  if [[ "$1" == "" ]]; then
+    echo "Use: kidnc <cluster>"
+    return 1
+  fi
+  cluster="$1"
+  docker stop $(kind get nodes --name "$cluster")
+}
+
+# kiupc <cluster> - docker start $(kind get nodes --name <cluster>)
+function kiupc() {
+  local cluster
+  if [[ "$1" == "" ]]; then
+    echo "Use: kiupc <cluster>"
+    return 1
+  fi
+  cluster="$1"
+  docker start $(kind get nodes --name "$cluster")
+}

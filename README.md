@@ -489,6 +489,19 @@ To automatically update the README.md file with the latest aliases and functions
     # terminate process listening on given port
     terminate-process-on-port
 
+### KIND
+    # kind get clusters
+    kigc
+
+    # kind delete cluster --name <cluster>
+    kidc <cluster>
+
+    # docker stop $(kind get nodes --name <cluster>)
+    kidnc <cluster>
+
+    # docker start $(kind get nodes --name <cluster>)
+    kiupc <cluster>
+
 ### KUBERNETES
     # kubectl
     k

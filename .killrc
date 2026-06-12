@@ -13,7 +13,7 @@ function kill-process-on-port() {
     echo "There is no process listening on port $port"
   else
     echo "Killing process with pid $pid"
-    kill -9 "$pid"
+    echo "$pid" | xargs kill -9
   fi
 }
 
@@ -32,6 +32,6 @@ function terminate-process-on-port() {
     echo "There is no process listening on port $port"
   else
     echo "Terminating process with pid $pid"
-    kill -15 "$pid"
+    echo "$pid" | xargs kill -15
   fi
 }

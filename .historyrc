@@ -1,10 +1,13 @@
-# hg <term> - find history containing a term
+# hg <term> [<term> ...] - find history containing all given terms
 function hg() {
-  local term
-  if [[ "$1" == "" ]]; then
-    echo "Use: hg <term>"
+  if [[ $# -eq 0 ]]; then
+    echo "Use: hg <term> [<term> ...]"
     return 1
   fi
-  term="$1"
-  history 1 | grep "$term"
+  local cmd="history 1"
+  local term
+  for term in "$@"; do
+    cmd+=" | grep -- $(printf '%q' "$term")"
+  done
+  eval "$cmd"
 }

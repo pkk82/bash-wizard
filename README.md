@@ -461,8 +461,8 @@ To automatically update the README.md file with the latest aliases and functions
     git-set-global-pull-rebase
 
 ### HISTORY
-    # find history containing a term
-    hg <term>
+    # find history containing all given terms
+    hg <term> [<term> ...]
 
 ### HTPASSWD
     # encrypt a string using BCrypt hashing for use in Spring applications

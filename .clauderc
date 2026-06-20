@@ -1,9 +1,9 @@
-# claude - run claude with CLAUDE_CONFIG_DIR set to nearest .claude dir up the hierarchy (fallback: $HOME/.claude)
+# claude - run claude with CLAUDE_CONFIG_DIR set to nearest .claude dir containing .claude.json up the hierarchy (fallback: $HOME/.claude)
 function claude() {
   local dir="$PWD"
   local configDir=""
   while [[ "$dir" != "/" ]]; do
-    if [[ -d "$dir/.claude" ]]; then
+    if [[ -f "$dir/.claude/.claude.json" ]]; then
       configDir="$dir/.claude"
       break
     fi

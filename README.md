@@ -45,7 +45,7 @@ To automatically update the README.md file with the latest aliases and functions
     bwu
 
 ### CLAUDE
-    # run claude with CLAUDE_CONFIG_DIR set to nearest .claude dir up the hierarchy (fallback: $HOME/.claude)
+    # run claude with CLAUDE_CONFIG_DIR set to nearest .claude dir containing .claude.json up the hierarchy (fallback: $HOME/.claude)
     claude
 
 ### D2

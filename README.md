@@ -44,6 +44,10 @@ To automatically update the README.md file with the latest aliases and functions
     # bash-wizard update
     bwu
 
+### CLAUDE
+    # run claude with CLAUDE_CONFIG_DIR set to nearest .claude dir up the hierarchy (fallback: $HOME/.claude)
+    claude
+
 ### D2
     # d2 -w <file> -o /tmp/<file>.svg
     d2w

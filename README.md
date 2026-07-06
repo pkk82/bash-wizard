@@ -299,6 +299,39 @@ To automatically update the README.md file with the latest aliases and functions
     # git log --oneline -n 9
     gl9
 
+    # git log --oneline -n 10
+    gl10
+
+    # git log --oneline -n 11
+    gl11
+
+    # git log --oneline -n 12
+    gl12
+
+    # git log --oneline -n 13
+    gl13
+
+    # git log --oneline -n 14
+    gl14
+
+    # git log --oneline -n 15
+    gl15
+
+    # git log --oneline -n 16
+    gl16
+
+    # git log --oneline -n 17
+    gl17
+
+    # git log --oneline -n 18
+    gl18
+
+    # git log --oneline -n 19
+    gl19
+
+    # git log --oneline -n 20
+    gl20
+
     # git log -n 1 with author and email
     gla1
 

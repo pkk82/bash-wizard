@@ -165,6 +165,39 @@ alias gl8='git log --oneline -n 8'
 # gl9 - git log --oneline -n 9
 alias gl9='git log --oneline -n 9'
 
+# gl10 - git log --oneline -n 10
+alias gl10='git log --oneline -n 10'
+
+# gl11 - git log --oneline -n 11
+alias gl11='git log --oneline -n 11'
+
+# gl12 - git log --oneline -n 12
+alias gl12='git log --oneline -n 12'
+
+# gl13 - git log --oneline -n 13
+alias gl13='git log --oneline -n 13'
+
+# gl14 - git log --oneline -n 14
+alias gl14='git log --oneline -n 14'
+
+# gl15 - git log --oneline -n 15
+alias gl15='git log --oneline -n 15'
+
+# gl16 - git log --oneline -n 16
+alias gl16='git log --oneline -n 16'
+
+# gl17 - git log --oneline -n 17
+alias gl17='git log --oneline -n 17'
+
+# gl18 - git log --oneline -n 18
+alias gl18='git log --oneline -n 18'
+
+# gl19 - git log --oneline -n 19
+alias gl19='git log --oneline -n 19'
+
+# gl20 - git log --oneline -n 20
+alias gl20='git log --oneline -n 20'
+
 # gla1 - git log -n 1 with author and email
 alias gla1='git log -n 1 --pretty=format:"%h %s %an <%ae>"'
 

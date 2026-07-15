@@ -11,15 +11,38 @@ function mvn-find-settings() {
   return 1
 }
 
-# mvn_ - maven wrapper that auto-detects local .m2/settings.xml in directory hierarchy
+# mvn-opt-takes-value - true if the argument is a Maven option whose value is the next argument (so that value is left untouched)
+function mvn-opt-takes-value() {
+  case "$1" in
+    -f|--file|-s|--settings|-gs|--global-settings|-pl|--projects|-rf|--resume-from|\
+    -t|--toolchains|-gt|--global-toolchains|-l|--log-file|-b|--builder|-P|--activate-profiles)
+      return 0 ;;
+    *)
+      return 1 ;;
+  esac
+}
+
+# mvn_ - maven wrapper: auto-detects local .m2/settings.xml up the directory tree, and rewrites any argument that is a directory containing a pom.xml to -f <dir>/pom.xml, so each alias takes an optional [dir] argument (e.g. mcist [dir] builds dir/pom.xml)
 function mvn_() {
   local settings
   settings=$(mvn-find-settings)
+
+  local args=() arg prev="" pom
+  for arg in "$@"; do
+    pom="${arg%/}/pom.xml"
+    if ! mvn-opt-takes-value "$prev" && [[ -f "$pom" ]]; then
+      args+=(-f "$pom")
+    else
+      args+=("$arg")
+    fi
+    prev="$arg"
+  done
+
   if [[ -n "$settings" ]]; then
     echo "Using settings: $settings"
-    command mvn -s "$settings" "$@"
+    command mvn -s "$settings" "${args[@]}"
   else
-    command mvn "$@"
+    command mvn "${args[@]}"
   fi
 }
 

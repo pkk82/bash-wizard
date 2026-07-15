@@ -557,7 +557,10 @@ To automatically update the README.md file with the latest aliases and functions
     # find closest .m2/settings.xml between $PWD and $HOME (excludes $HOME itself as it's the default)
     mvn-find-settings
 
-    # maven wrapper that auto-detects local .m2/settings.xml in directory hierarchy
+    # true if the argument is a Maven option whose value is the next argument (so that value is left untouched)
+    mvn-opt-takes-value
+
+    # maven wrapper: auto-detects local .m2/settings.xml up the directory tree, and rewrites any argument that is a directory containing a pom.xml to -f <dir>/pom.xml, so each alias takes an optional [dir] argument (e.g. mcist [dir] builds dir/pom.xml)
     mvn_
 
     # mvn clean install

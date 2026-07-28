@@ -8,6 +8,8 @@ function ii {
   dir=$(basename "$pwd")
   unameOsName=$(uname)
 
+  ii-sync-maven-settings
+
   if [[ "$unameOsName" == "Linux" ]]; then
 
      if [ -n "$INTELLIJ_HOME" ]; then
@@ -47,4 +49,57 @@ function ii {
     return 1
   fi
 
+}
+
+# ii-sync-maven-settings - set maven user settings file in ./.idea/workspace.xml to settings.xml found by mvn-find-settings, so IntelliJ resolves dependencies like the mvn_ aliases
+function ii-sync-maven-settings() {
+  local settings
+  local workspaceXml
+  local tmp
+  command -v mvn-find-settings 1>/dev/null 2>&1 || return 0
+  settings=$(mvn-find-settings) || return 0
+  workspaceXml="$PWD/.idea/workspace.xml"
+  tmp="$workspaceXml.tmp"
+
+  if [[ ! -f "$workspaceXml" ]]; then
+    mkdir -p "$PWD/.idea"
+    cat >"$workspaceXml" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="userSettingsFile" value="$settings" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+</project>
+EOF
+  elif grep -q 'name="userSettingsFile"' "$workspaceXml"; then
+    SETTINGS="$settings" awk '
+      /<option name="userSettingsFile"/ {
+        match($0, /^[ \t]*/)
+        printf "%s<option name=\"userSettingsFile\" value=\"%s\" />\n", substr($0, 1, RLENGTH), ENVIRON["SETTINGS"]
+        next
+      }
+      { print }
+    ' "$workspaceXml" >"$tmp" && mv "$tmp" "$workspaceXml"
+  elif ! grep -q 'name="MavenImportPreferences"' "$workspaceXml"; then
+    SETTINGS="$settings" awk '
+      /<\/project>/ {
+        print "  <component name=\"MavenImportPreferences\">"
+        print "    <option name=\"generalSettings\">"
+        print "      <MavenGeneralSettings>"
+        printf "        <option name=\"userSettingsFile\" value=\"%s\" />\n", ENVIRON["SETTINGS"]
+        print "      </MavenGeneralSettings>"
+        print "    </option>"
+        print "  </component>"
+      }
+      { print }
+    ' "$workspaceXml" >"$tmp" && mv "$tmp" "$workspaceXml"
+  else
+    echo "MavenImportPreferences already present in $workspaceXml - set maven user settings file in IntelliJ manually to: $settings"
+    return 0
+  fi
+  echo "IntelliJ maven user settings file: $settings"
 }

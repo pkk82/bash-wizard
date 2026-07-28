@@ -509,6 +509,9 @@ To automatically update the README.md file with the latest aliases and functions
     # launch IntelliJ IDEA with current directory as project
     ii
 
+    # set maven user settings file in ./.idea/workspace.xml to settings.xml found by mvn-find-settings, so IntelliJ resolves dependencies like the mvn_ aliases
+    ii-sync-maven-settings
+
 ### JAVA
     # check if java class is main class
     jim <class file path>

@@ -97,9 +97,48 @@ EOF
       }
       { print }
     ' "$workspaceXml" >"$tmp" && mv "$tmp" "$workspaceXml"
+  elif grep -q '<MavenGeneralSettings' "$workspaceXml"; then
+    SETTINGS="$settings" awk '
+      /<MavenGeneralSettings *\/>/ {
+        match($0, /^[ \t]*/)
+        indent = substr($0, 1, RLENGTH)
+        print indent "<MavenGeneralSettings>"
+        printf "%s  <option name=\"userSettingsFile\" value=\"%s\" />\n", indent, ENVIRON["SETTINGS"]
+        print indent "</MavenGeneralSettings>"
+        next
+      }
+      /<MavenGeneralSettings>/ {
+        print
+        match($0, /^[ \t]*/)
+        indent = substr($0, 1, RLENGTH)
+        printf "%s  <option name=\"userSettingsFile\" value=\"%s\" />\n", indent, ENVIRON["SETTINGS"]
+        next
+      }
+      { print }
+    ' "$workspaceXml" >"$tmp" && mv "$tmp" "$workspaceXml"
   else
-    echo "MavenImportPreferences already present in $workspaceXml - set maven user settings file in IntelliJ manually to: $settings"
-    return 0
+    SETTINGS="$settings" awk '
+      /<component name="MavenImportPreferences"/ {
+        match($0, /^[ \t]*/)
+        indent = substr($0, 1, RLENGTH)
+        selfClosed = ($0 ~ /\/>[ \t]*$/)
+        if (selfClosed) {
+          print indent "<component name=\"MavenImportPreferences\">"
+        } else {
+          print
+        }
+        print indent "  <option name=\"generalSettings\">"
+        print indent "    <MavenGeneralSettings>"
+        printf "%s      <option name=\"userSettingsFile\" value=\"%s\" />\n", indent, ENVIRON["SETTINGS"]
+        print indent "    </MavenGeneralSettings>"
+        print indent "  </option>"
+        if (selfClosed) {
+          print indent "</component>"
+        }
+        next
+      }
+      { print }
+    ' "$workspaceXml" >"$tmp" && mv "$tmp" "$workspaceXml"
   fi
   echo "IntelliJ maven user settings file: $settings"
 }

@@ -57,7 +57,10 @@ function ii-sync-maven-settings() {
   local workspaceXml
   local tmp
   command -v mvn-find-settings 1>/dev/null 2>&1 || return 0
-  settings=$(mvn-find-settings) || return 0
+  if ! settings=$(mvn-find-settings); then
+    echo "ii-sync-maven-settings: no .m2/settings.xml found between $PWD and $HOME - IntelliJ will use default ~/.m2/settings.xml"
+    return 0
+  fi
   workspaceXml="$PWD/.idea/workspace.xml"
   tmp="$workspaceXml.tmp"
 

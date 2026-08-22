@@ -549,6 +549,12 @@ To automatically update the README.md file with the latest aliases and functions
     # kubectl
     k
 
+    # kubectl cluster-info
+    kci
+
+    # kubectl get nodes
+    kgn
+
 ### MACOS
     # replaces the right command key with right option key
     macos-replace-right-command-and-right-option

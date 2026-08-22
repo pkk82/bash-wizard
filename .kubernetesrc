@@ -1,2 +1,8 @@
 # k - kubectl
 alias k='kubectl'
+
+# kci - kubectl cluster-info
+alias kci='kubectl cluster-info'
+
+# kgn - kubectl get nodes
+alias kgn='kubectl get nodes'

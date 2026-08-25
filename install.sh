@@ -92,6 +92,7 @@ function createMainRcFile() {
   rm -rf "$mainRcFile"
   for f in "$selfDir"/.*rc; do
     fileName=$(basename "$f")
+    [[ "$fileName" != ".envrc" ]] || continue
     echo ". \"\$HOME$pathNoHome/$fileName\"" >>"$mainRcFile"
   done
 }
@@ -100,6 +101,7 @@ function createRcFiles() {
   selfDir=$(selfDir)
   for f in "$selfDir"/.*rc; do
     fileName=$(basename "$f")
+    [[ "$fileName" != ".envrc" ]] || continue
     cat "$f" >"$1/$fileName"
   done
 }

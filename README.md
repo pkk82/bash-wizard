@@ -497,6 +497,40 @@ To automatically update the README.md file with the latest aliases and functions
     # git config --global pull.rebase true'
     git-set-global-pull-rebase
 
+### GRADLE
+    # find closest gradlew between $PWD and / (so the wrapper works from any subdirectory)
+    gr-find-wrapper
+
+    # true if the argument is a Gradle option whose value is the next argument (so that value is left untouched)
+    gr-opt-takes-value
+
+    # gradle wrapper: uses the closest gradlew up the directory tree (falls back to gradle), and rewrites any argument that is a directory containing a gradle build to -p <dir>, so each alias takes an optional [dir] argument (e.g. grcb [dir] builds dir)
+    gr_
+
+    # gradle build
+    grb [dir]
+
+    # gradle clean build
+    grcb [dir]
+
+    # gradle build -x test
+    grbst [dir]
+
+    # gradle clean build -x test
+    grcbst [dir]
+
+    # gradle check
+    grch [dir]
+
+    # gradle spotlessApply
+    grsa [dir]
+
+    # gradle tasks
+    grta [dir]
+
+    # gradle bootRun, optionally with spring profile
+    grbr <profile> [more gradle args...]
+
 ### HISTORY
     # find history containing all given terms
     hg <term> [<term> ...]

@@ -1,0 +1,78 @@
+# gr-find-wrapper - find closest gradlew between $PWD and / (so the wrapper works from any subdirectory)
+function gr-find-wrapper() {
+  local dir="$PWD"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -x "$dir/gradlew" ]]; then
+      echo "$dir/gradlew"
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+  done
+  return 1
+}
+
+# gr-opt-takes-value - true if the argument is a Gradle option whose value is the next argument (so that value is left untouched)
+function gr-opt-takes-value() {
+  case "$1" in
+    -p|--project-dir|-b|--build-file|-c|--settings-file|-I|--init-script|-g|--gradle-user-home|\
+    -x|--exclude-task|--include-build|--console|--max-workers|--priority|--project-cache-dir)
+      return 0 ;;
+    *)
+      return 1 ;;
+  esac
+}
+
+# gr_ - gradle wrapper: uses the closest gradlew up the directory tree (falls back to gradle), and rewrites any argument that is a directory containing a gradle build to -p <dir>, so each alias takes an optional [dir] argument (e.g. grcb [dir] builds dir)
+function gr_() {
+  local launcher
+  launcher=$(gr-find-wrapper)
+
+  local args=() arg prev="" dir
+  for arg in "$@"; do
+    dir="${arg%/}"
+    if ! gr-opt-takes-value "$prev" && \
+      [[ -f "$dir/build.gradle" || -f "$dir/build.gradle.kts" || -f "$dir/settings.gradle" || -f "$dir/settings.gradle.kts" ]]; then
+      args+=(-p "$dir")
+    else
+      args+=("$arg")
+    fi
+    prev="$arg"
+  done
+
+  if [[ -n "$launcher" ]]; then
+    echo "Using wrapper: $launcher"
+    "$launcher" "${args[@]}"
+  else
+    command gradle "${args[@]}"
+  fi
+}
+
+# grb [dir] - gradle build
+alias grb='gr_ build'
+
+# grcb [dir] - gradle clean build
+alias grcb='gr_ clean build'
+
+# grbst [dir] - gradle build -x test
+alias grbst='gr_ build -x test'
+
+# grcbst [dir] - gradle clean build -x test
+alias grcbst='gr_ clean build -x test'
+
+# grch [dir] - gradle check
+alias grch='gr_ check'
+
+# grsa [dir] - gradle spotlessApply
+alias grsa='gr_ spotlessApply'
+
+# grta [dir] - gradle tasks
+alias grta='gr_ tasks'
+
+# grbr <profile> [more gradle args...] - gradle bootRun, optionally with spring profile
+function grbr() {
+  if [[ -z "$1" ]]; then
+    gr_ bootRun "$@"
+  else
+    gr_ bootRun --args="--spring.profiles.active=$1" "${@:2}"
+  fi
+}

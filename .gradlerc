@@ -68,6 +68,9 @@ alias grsa='gr_ spotlessApply'
 # grta [dir] - gradle tasks
 alias grta='gr_ tasks'
 
+# grtaa [dir] - gradle tasks --group application (only the Application tasks section)
+alias grtaa='gr_ tasks --group application'
+
 # grbr <profile> [more gradle args...] - gradle bootRun, optionally with spring profile
 function grbr() {
   if [[ -z "$1" ]]; then

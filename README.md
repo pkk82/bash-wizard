@@ -528,6 +528,9 @@ To automatically update the README.md file with the latest aliases and functions
     # gradle tasks
     grta [dir]
 
+    # gradle tasks --group application (only the Application tasks section)
+    grtaa [dir]
+
     # gradle bootRun, optionally with spring profile
     grbr <profile> [more gradle args...]
 

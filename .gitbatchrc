@@ -19,8 +19,8 @@ function gbp() {
     [[ -e "$dir" ]] || continue
     [[ -d "$dir" ]] || continue
 
-    # Check if directory is a git repository (handles worktrees as well)
-    if git -C "$dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    # Check if directory is the root of a git repository (handles worktrees as well; skips subdirectories of a repository)
+    if git -C "$dir" rev-parse --is-inside-work-tree >/dev/null 2>&1 && [[ -z "$(git -C "$dir" rev-parse --show-prefix 2>/dev/null)" ]]; then
       repo_name=$(basename "$dir")
       branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null)
       if [[ "$branch" == "main" || "$branch" == "master" ]]; then
@@ -56,7 +56,7 @@ function gbcmp() {
     [[ -e "$dir" ]] || continue
     [[ -d "$dir" ]] || continue
 
-    if git -C "$dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    if git -C "$dir" rev-parse --is-inside-work-tree >/dev/null 2>&1 && [[ -z "$(git -C "$dir" rev-parse --show-prefix 2>/dev/null)" ]]; then
       repo_name=$(basename "$dir")
       main_branch=$(git -C "$dir" remote show origin | sed -n '/HEAD branch/s/.*: //p')
 

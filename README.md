@@ -592,6 +592,10 @@ To automatically update the README.md file with the latest aliases and functions
     # kubectl get nodes
     kgn
 
+### LATEX
+    # latexmk -pvc
+    lmk
+
 ### MACOS
     # replaces the right command key with right option key
     macos-replace-right-command-and-right-option

@@ -1,0 +1,2 @@
+# lmk - latexmk -pvc
+alias lmk='latexmk -pvc'

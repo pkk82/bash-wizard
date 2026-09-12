@@ -722,6 +722,10 @@ To automatically update the README.md file with the latest aliases and functions
     # rename files in a current directory based on a regex pattern and replacement
     rename-files-using-sed
 
+### SHELL
+    # exit
+    e
+
 ### SVM
     # download soft-ver-man
     svmd

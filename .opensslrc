@@ -1,33 +1,22 @@
-# openssl-generate-certificate <name> <subject> <passphrase> [name-constraints] - generate a CA certificate and an encrypted private key, optionally limited to the given names
+# openssl-generate-certificate <name> <subject> [name-constraints] - generate a CA certificate and an encrypted private key (openssl prompts for the passphrase), optionally limited to the given names
 function openssl-generate-certificate() {
   local name="$1"
   local subject="$2"
-  local passphrase="$3"
-  local name_constraints="$4"
-  local passphraseDir;
-  local passphraseFilePath
+  local name_constraints="$3"
   local extensions
-  if [[ "$passphrase" == "" ]]; then
-    echo "Use: openssl-generate-certificate <name> <subject> <passphrase> [name-constraints]"
+  if [[ "$subject" == "" ]]; then
+    echo "Use: openssl-generate-certificate <name> <subject> [name-constraints]"
     echo "  <name> - name of the certificate used for filenames"
     echo "  <subject> - subject of the certificate"
     echo "    example: /C=<country>/ST=<state>/L=<location>/O=<organization>/OU=<organization unit>/CN=<common name>"
-    echo "  <passphrase> - passphrase for the private key"
     echo "  [name-constraints] - names the CA is permitted to sign certificates for"
     echo "    example: DNS:example.com,IP:127.0.0.1/255.255.255.255"
     return 1
   fi
 
-  passphraseDir="$TMPDIR/$(date +%s)"
-  passphraseFilePath="$passphraseDir/$(date +%s)"
-  mkdir -m 700 "$passphraseDir"
-  echo "$passphrase" > "$passphraseFilePath"
-  chmod 600 "$passphraseFilePath"
-
   echo "Generating private key to ${name}.key"
   openssl genrsa \
     -aes256 \
-    -passout file:"$passphraseFilePath" \
     -out "./${name}.key" 4096
 
   extensions=(
@@ -48,9 +37,7 @@ function openssl-generate-certificate() {
     -key "./${name}.key" \
     -subj "$subject" \
     "${extensions[@]}" \
-    -out "./${name}.crt" \
-    -passin file:"$passphraseFilePath"
-  rm -rf "$passphraseDir"
+    -out "./${name}.crt"
 }
 
 # openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <name> <subject> <alt-names> - generate a server certificate and private key signed by the CA

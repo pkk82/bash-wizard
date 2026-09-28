@@ -686,9 +686,15 @@ To automatically update the README.md file with the latest aliases and functions
     mvn-latest-plugin-version <plugin>
 
 ### OPENSSL
- openssl-generate-certificate <name> <subject> <passphrase>
- openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <name> <subject> <alt-names>
- openssl-display-certificate <certificate>
+    # generate a CA certificate and an encrypted private key, optionally limited to the given names
+    openssl-generate-certificate <name> <subject> <passphrase> [name-constraints]
+
+    # generate a server certificate and private key signed by the CA
+    openssl-generate-server-certificate-signed-by-ca <ca-cert> <ca-key> <name> <subject> <alt-names>
+
+    # display a certificate
+    openssl-display-certificate <certificate>
+
 ### PNPM
     # npm install --location=global pnpm
     pnpm-install-via-npm
